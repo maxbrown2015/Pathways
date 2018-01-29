@@ -107,7 +107,7 @@
       "source": "048",
       "target": "999",
       "color" : "rgb(255, 255, 255, .9)"
-    },
+    }
   ],
   "nodes": [
     {
@@ -145,8 +145,7 @@
       "courseDescription": "Rise and Fall of the Russian Empire, 1522 - 1917",
       "x":"4",
       "y":"-4"
-    }
-
+    },
     {
       "id": "999",
       "title":"CLOSER_NODE",
