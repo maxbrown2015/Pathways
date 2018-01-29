@@ -7,6 +7,7 @@
         "url": "https://github.com/maxbrown2015/Pathways"
     },
     "dependencies": {
-        "sigma-js": "latest"
+        "sigma-js": "latest",
+        "jquery": "latest"
     }
 }
