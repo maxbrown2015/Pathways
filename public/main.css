@@ -80,3 +80,9 @@ body html {
 #Politics-Icon {
   background-color: #FF6666;
 }
+
+#mynetwork {
+    width: 1000px;
+    height: 800px;
+    border: 1px solid lightgray;
+}
