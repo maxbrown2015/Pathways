@@ -1,0 +1,88 @@
+body html {
+  margin: 0;
+  padding: 0;
+}
+
+.background-img {
+  background-image: url(img/blue-background-1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+
+  height: 100vh;
+  width: 100%;
+}
+
+#legend {
+  margin-top: 10px;
+}
+
+#legend div {
+  padding: 0;
+  border: 1px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#legend div p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+
+#Law-Icon {
+  background-color: #8b4789;
+}
+#Gender-Icon {
+  background-color: #ffff66;
+}
+
+#Borders-Icon {
+  background-color: #00abff;
+}
+
+#Intellectual-Icon {
+  background-color: #ffa500;
+}
+
+#Economic-Icon {
+  background-color: #00FF33;
+}
+
+#War-Icon {
+  background-color:#ffc0cb;
+}
+
+#Religious-Icon {
+  background-color:  #40e0d0;
+}
+
+#Human-Icon {
+  background-color: #a52a2a;
+}
+
+#Historical-Icon {
+  background-color: #008000;
+}
+
+#Slavery-Icon {
+  background-color: #c4a464;
+}
+
+#Space-Icon {
+  background-color: #c792c7;
+}
+
+#Politics-Icon {
+  background-color: #FF6666;
+}
+
+#mynetwork {
+    width: 1000px;
+    height: 800px;
+    border: 1px solid lightgray;
+}

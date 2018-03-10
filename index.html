@@ -6,9 +6,9 @@
     <title>History Pathways</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- edit this in the future 
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-     ^^^^^ -->
+
+    <link rel="stylesheet" type="text/css" media="screen" href="public/main.css" />
+
 
     <!-- Bootstrap and jquery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,26 +18,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
-    <style type="text/css">
-        #mynetwork {
-            width: 1000px;
-            height: 800px;
-            border: 1px solid lightgray;
-        }
-    </style>
-
 </head>
 <body>
+  <div class="background-img">
     <!-- header -->
     <div class="container-fluid">
         <div class="text-center">
-            <h3>Header goes here</h3>
+            <h3>Pathways: An Interactive Display of Penn's History Department's Course Offerings</h3>
+        </div>
+        <div id="legend" class="row">
+          <div id="Law-Icon" class="col-sm-1"><p>Law and Society</p></div>
+          <div id="Gender-Icon"class="col-sm-1"><p>Gender And Sexuality</p></div>
+          <div id="Borders-Icon"class="col-sm-1"><p>Borders, Migration, Immigration</p></div>
+          <div id="Intellectual-Icon"class="col-sm-1"><p>Intellectual and Cultural Life</p></div>
+          <div id="Economic-Icon" class="col-sm-1"><p>Economic History</p></div>
+          <div id="War-Icon"class="col-sm-1"><p>War, Peace, Diplomacy</p></div>
+          <div id="Religious-Icon"class="col-sm-1"><p>Religious Communities</p></div>
+          <div id="Human-Icon"class="col-sm-1"><p>Human Rights</p></div>
+          <div id="Historical-Icon"class="col-sm-1"><p>Historical Method</p></div>
+          <div id="Slavery-Icon" class="col-sm-1"><p>Slavery and Race</p></div>
+          <div id="Space-Icon" class="col-sm-1"><p>Space and Place</p></div>
+          <div id="Politics-Icon" class="col-sm-1"><p>Politics and Revolution</p></div>
         </div>
     </div>
     <!-- graph area -->
-    <div class="container" id="graphArea">
-        <div id="mynetwork"></div> 
-    </div>
+     
 
     <!-- course description area-->
     <div class="container-fluid">
@@ -55,9 +60,11 @@
             <div class="col-md-3" id="course_description">
                 <p>Course description goes here</p>
             </div>
-        </div> 
+        </div>
     </div>
-    <script type="text/javascript" src="./data/graphdata.js"></script>
-    <script type="text/javascript" src="./public/js/vis_main.js"></script>
+        <!-- sigma js libraries -->
+    <script type="text/javascript" src="data/graphdata.js"></script>
+    <script type="text/javascript" src="data/testNetwork.js"></script>
+  </div>
 </body>
 </html>
