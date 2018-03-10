@@ -1,20 +1,12 @@
 /**
  * This script parses through the graph object to populate the bottom div
  */
-var graphdata; //= require('../../data/graph_data.json');
-
-$.getJSON('/data/graph_data.json', function(data){
-    graphdata = data;
-});
-
-
-console.log(graphdata);
-console.log(graphdata.nodes);
+//var graphdata; = require('../../data/graph_data.json');
 
 
 //test function 
 var testPathways = function () {
-    var graphNode = graphdata.nodes;
+    var graphNode = window.graphnodes.nodes;
     var pathway1 = [];
     var pathway2 = [];
     var pathway3 = [];

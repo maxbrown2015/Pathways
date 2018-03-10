@@ -4,7 +4,7 @@
       "id": "0",
       "type": "Gender_and_Sexuality",
       "source": "011",
-      "target": "",
+      "target": "999",
       "color" : "rgb(255, 255, 255, .9)"
     },
 
@@ -114,43 +114,44 @@
       "id": "011",
       "title": "Hist-011: Deciphering America",
       "courseDescription": "Deciphering America lorem ipsum",
-      "x": "0",
-      "y": "0"
+      "x": 0,
+      "y": 0
     },
     {
       "id": "030",
       "title": "Hist-030: Emergence of Modern Europe",
       "courseDescription": "Emergence of Modern Europe stuff",
-      "x": "1",
-      "y": "-1"
+      "x": 1,
+      "y": -1
     },
     {
       "id": "031",
       "title":"Hist-031: Making or Breaking European Hegemony",
       "courseDescription": "Making or Breaking European Hegemony",
-      "x":"2",
-      "y":"-2"
+      "x":2,
+      "y":-2
     },
     {
       "id": "040",
       "title":"Hist-040: Early Modern Europe, 1450 - 1750",
       "courseDescription": "Early Modern Europe, 1450 - 1750",
-      "x":"3",
-      "y":"-3"
+      "x":3,
+      "y":-3
     },
     {
       "id": "048",
       "title":"HIST-048: Rise and Fall of the Russian Empire, 1522 - 1917",
       "courseDescription": "Rise and Fall of the Russian Empire, 1522 - 1917",
-      "x":"4",
-      "y":"-4"
+      "x":4,
+      "y":-4
     },
     {
       "id": "999",
       "title":"CLOSER_NODE",
       "courseDescription": "NOT_A_COURSE",
-      "x":"5",
-      "y":"-5"
+      "x":5,
+      "y":-5
     }
   ]
 }
+
