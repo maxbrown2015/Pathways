@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Vis JS library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
 
     <style type="text/css">
@@ -63,25 +66,7 @@
             </div>
         </div> 
     </div>
-        <!-- sigma js libraries -->
-    <script src="./lib/sigma.min.js"></script>
-    <script src="./lib/sigma.layout.forceAtlas2.min.js"></script>
-    <script src="./lib/sigma.parsers.json.min.js"></script>
-    <script type="text/javascript" src="data/graphdata.js"></script>
-    <script type="text/javascript" src="data/testNetwork.js"></script>
-    <script>
-    // Let's first initialize sigma:
-    sigma.classes.graph.addMethod('getNodes', function() {
-  return this.nodesArray;
-});
-    
-    var s = new sigma('graph-container');
-        s.graph.read(courseList);
-        // Finally, let's ask our sigma instance to refresh:
-        console.log(s);
-        s.refresh();
 
 
-    </script>
 </body>
 </html>
