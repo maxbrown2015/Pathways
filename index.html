@@ -12,8 +12,14 @@
 
     <!-- Bootstrap and jquery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js"></script>
+
+    <!-- Tour.js -->
+
+
     <!-- Vis JS library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
@@ -23,8 +29,15 @@
   <div class="background-img">
     <!-- header -->
     <div class="container-fluid">
-        <div class="text-center">
-            <h3>Pathways: An Interactive Display of Penn's History Department's Course Offerings</h3>
+        <div class="row text-center">
+            <div class="col-lg-2"><!--img id="penn-shield-icon" src="public/img/shield-simple.png">--> </div>
+            <div class="col-lg-8">
+              <h3 id="title">Pathways: An Interactive Display of Penn's History Department's Course Offerings</h3>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div id="tour-start-wrapper" class="row">
+          <button id="tour-start">See How It Works</button>
         </div>
         <div id="legend" class="row">
           <div id="Law-Icon" class="col-sm-1"><p>Law and Society</p></div>
@@ -41,8 +54,11 @@
           <div id="Politics-Icon" class="col-sm-1"><p>Politics and Revolution</p></div>
         </div>
     </div>
+
     <!-- graph area -->
-     
+    <div>
+      <button id="test-node">TEST<button>
+    </div>
 
     <!-- course description area-->
     <div class="container-fluid">
@@ -57,14 +73,17 @@
             <div class="col-md-2" id="pathway3">
                 <p> list goes here</p>
             </div>
-            <div class="col-md-3" id="course_description">
+            <div class="col-md-3" id="course-description">
                 <p>Course description goes here</p>
             </div>
         </div>
     </div>
-        <!-- sigma js libraries -->
-    <script type="text/javascript" src="data/graphdata.js"></script>
-    <script type="text/javascript" src="data/testNetwork.js"></script>
+
+    <hr id="footer-line">
+    <div id="signature-wrapper" class="row"><p>&lt;/&gt; with &hearts; by Shadrack Lilan and Maxwell Brown</p></div>
   </div>
+  <script src="public/js/tour.js"></script>
+
+
 </body>
 </html>
