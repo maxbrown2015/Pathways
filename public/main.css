@@ -3,6 +3,16 @@
   padding: 0;
 }
 
+
+.background-img {
+  background-image: url(img/vintage-concrete.png);
+  background-position: center center;
+  background-repeat: repeat;
+
+  height: 100%;
+  width: 100%;
+}
+
 #title {
   color: #74000e;
   text-shadow: .001px .001px white;
@@ -27,17 +37,6 @@
   box-shadow: 0 5px #666;
   transform: translateY(1px);
 }
-
-.background-img {
-  background-image: url(img/vintage-concrete.png);
-  background-position: center center;
-  background-repeat: repeat;
-
-  height: 100vh;
-  width: 100%;
-}
-
-
 
 #legend {
   margin-top: 10px;

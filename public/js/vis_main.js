@@ -15,15 +15,15 @@ var network = new vis.Network(container, data, options);
 //handler to show the course description when a user clicks on a course
 var showDescription = function () {
   var courseDetail = $(this).data('description');
-  $('#course_description').html('<h4>Course Description</h4>');
-  $('#course_description').append('<p>' + courseDetail + '</p>');
+  $('#course-description').html('<h4>Course Description</h4>');
+  $('#course-description').append('<p>' + courseDetail + '</p>');
 };
 
 
 /*
 *If a node is clicked, populate lower half of page with list of courses
 *that share the same pathways.
-* 
+*
 */
 network.on('click', function (eventObj) {
   console.log(eventObj);
@@ -39,7 +39,7 @@ network.on('click', function (eventObj) {
     $('#pathway1').html('<ul id="path1"></ul>');
     $('#pathway2').html('<ul id="path2"></ul>');
     $('#pathway3').html('<ul id="path3"></ul>');
-    $('#course_description').html('<h4>Course Description</h4>');
+    $('#course-description').html('<h4>Course Description</h4>');
 
     pathways.forEach(function (element) {
       var currPath = pathwaysObj[element];
@@ -59,5 +59,5 @@ network.on('click', function (eventObj) {
       }
       currCol++;
     });
-  } 
+  }
 });
