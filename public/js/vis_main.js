@@ -1,14 +1,63 @@
 // create a network
 var container = document.getElementById('mynetwork');
 
-// provide the data in the vis format
+// provide the data in the vis Dataset format
 var data = {
-    nodes: nodes,
-    edges: edges
+  nodes: nodes,
+  edges: edges
 };
 var options = {};
 
-// initialize your network!
+// initialize the network!
 var network = new vis.Network(container, data, options);
 
-//click handler when item is clicked
+
+//handler to show the course description when a user clicks on a course
+var showDescription = function () {
+  var courseDetail = $(this).data('description');
+  $('#course_description').html('<h4>Course Description</h4>');
+  $('#course_description').append('<p>' + courseDetail + '</p>');
+};
+
+
+/*
+*If a node is clicked, populate lower half of page with list of courses
+*that share the same pathways.
+* 
+*/
+network.on('click', function (eventObj) {
+  console.log(eventObj);
+  console.log(nodes.get(eventObj.nodes[0]));
+
+
+  if (eventObj.nodes.length !== 0) {
+    var nodeObj = nodes.get(eventObj.nodes[0]);
+    var pathways = nodeObj.pathways;
+    var currCol = 1;
+
+    //clear data in columns and create new lists
+    $('#pathway1').html('<ul id="path1"></ul>');
+    $('#pathway2').html('<ul id="path2"></ul>');
+    $('#pathway3').html('<ul id="path3"></ul>');
+    $('#course_description').html('<h4>Course Description</h4>');
+
+    pathways.forEach(function (element) {
+      var currPath = pathwaysObj[element];
+      var currSection = '#pathway' + currCol;
+
+      var currLi = '#path' + currCol;
+      var $pathName = $('<h4></h4>').text(currPath[0].name);
+      $(currSection).prepend($pathName);
+
+      //for loop indexed at 1 to prevent access of pathway's name object
+      for (var i = 1; i < currPath.length; i++) {
+        var $li = $('<li></li>').text(currPath[i].label);
+        $li.data('description', currPath[i].courseDescription);
+        //attach click handler.
+        $li.click(showDescription);
+        $(currLi).append($li);
+      }
+      currCol++;
+    });
+  } 
+});

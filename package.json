@@ -7,11 +7,12 @@
         "url": "https://github.com/maxbrown2015/Pathways"
     },
     "scripts": {
-      "dev": "lite-server"
+        "dev": "lite-server"
     },
     "dependencies": {
         "sigma-js": "latest",
-        "jquery": "latest"
+        "jquery": "latest",
+        "eslint": "latest"
     },
     "devDependencies": {
         "lite-server": "^2.3.0"
