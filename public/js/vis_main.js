@@ -6,7 +6,13 @@ var data = {
   nodes: nodes,
   edges: edges
 };
-var options = {};
+var options = {
+  width: '100%',
+  height: '100%',
+  physics: {
+    enabled: false
+  }
+};
 
 // initialize the network!
 var network = new vis.Network(container, data, options);
