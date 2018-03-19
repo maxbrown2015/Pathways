@@ -34,18 +34,18 @@
                     <button id="tour-start">See How It Works</button>
                 </div>
                 <div id="legend" class="row">
-                    <div id="Law-Icon" class="col-sm-1"><p>Law and Society</p></div>
-                    <div id="Gender-Icon" class="col-sm-1"><p>Gender And Sexuality</p></div>
-                    <div id="Borders-Icon" class="col-sm-1"><p>Borders, Migration, Immigration</p></div>
-                    <div id="Intellectual-Icon" class="col-sm-1"><p>Intellectual and Cultural Life</p></div>
-                    <div id="Economic-Icon" class="col-sm-1"><p>Economic History</p></div>
-                    <div id="War-Icon" class="col-sm-1"><p>War, Peace, Diplomacy</p></div>
-                    <div id="Religious-Icon" class="col-sm-1"><p>Religious Communities</p></div>
-                    <div id="Human-Icon" class="col-sm-1"><p>Human Rights</p></div>
-                    <div id="Historical-Icon" class="col-sm-1"><p>Historical Method</p></div>
-                    <div id="Slavery-Icon" class="col-sm-1"><p>Slavery and Race</p></div>
-                    <div id="Space-Icon" class="col-sm-1"><p>Space and Place</p></div>
-                    <div id="Politics-Icon" class="col-sm-1"><p>Politics and Revolution</p></div>
+                    <div id="Law-Icon" data-pathway="law_society" class="col-sm-1"><p>Law and Society</p></div>
+                    <div id="Gender-Icon"  data-pathway="gender_sexuality" class="col-sm-1"><p>Gender And Sexuality</p></div>
+                    <div id="Borders-Icon" data-pathway="borders_migration" class="col-sm-1"><p>Borders, Migration, Immigration</p></div>
+                    <div id="Intellectual-Icon" data-pathway="intell_culture" class="col-sm-1"><p>Intellectual and Cultural Life</p></div>
+                    <div id="Economic-Icon" data-pathway="econ_history" class="col-sm-1"><p>Economic History</p></div>
+                    <div id="War-Icon" data-pathway="war_peace" class="col-sm-1"><p>War, Peace, Diplomacy</p></div>
+                    <div id="Religious-Icon" data-pathway="religious_comm" class="col-sm-1"><p>Religious Communities</p></div>
+                    <div id="Human-Icon" data-pathway="human_rights" class="col-sm-1"><p>Human Rights</p></div>
+                    <div id="Historical-Icon" data-pathway="historical_methods" class="col-sm-1"><p>Historical Method</p></div>
+                    <div id="Slavery-Icon" data-pathway="slavery_race" class="col-sm-1"><p>Slavery and Race</p></div>
+                    <div id="Space-Icon" data-pathway="space_place" class="col-sm-1"><p>Space and Place</p></div>
+                    <div id="Politics-Icon" data-pathway="politics_rev" class="col-sm-1"><p>Politics and Revolution</p></div>
                 </div>
             </div>
 
@@ -83,6 +83,7 @@
     <script type="text/javascript" src="data/graphdata.js"></script>
     <script type="text/javascript" src="data/pathway_list.js"></script>
     <!-- script to Draw the graph and events-->
+    <script type="text/javascript" src="public/js/legendEvents.js"></script>
     <script type="text/javascript" src="public/js/vis_main.js"></script>
     <script src="public/js/tour.js"></script>
 </body>
