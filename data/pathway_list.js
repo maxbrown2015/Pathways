@@ -8,7 +8,9 @@
 
 //Remaining pathways to be added later. 
 var pathwaysObj = {
-  law_society: [{name: 'Law and Society'}],
+  law_society: [
+    {name: 'Law and Society'}
+  ],
   gender_sexuality: [
     { name: 'Gender and Sexuality'},
     { label: 'HIST-011: Deciphering America',
@@ -16,7 +18,9 @@ var pathwaysObj = {
     { label: 'HIST-999: CLOSER_NODE',
       courseDescription: 'NOT_A_COURSE'}
   ],
-  borders_migration: [{name: 'Borders, Migration and Immigration'}],
+  borders_migration: [
+    {name: 'Borders, Migration and Immigration'}
+  ],
   intell_culture: [
     { name: 'Intellectual and Cultural Life'},
     { label: 'HIST-031: Making or Breaking European Hegemony',
