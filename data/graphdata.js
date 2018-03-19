@@ -21,7 +21,6 @@
  * 
  */
 
-
 var edges = new vis.DataSet ([
   {
     id: '0',
