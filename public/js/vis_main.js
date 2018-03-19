@@ -1,3 +1,8 @@
+/**
+ * This file holds the logic for drawing the graph and all the interactions with the user.
+ */
+
+
 // create a network
 var container = document.getElementById('mynetwork');
 

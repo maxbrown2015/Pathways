@@ -136,37 +136,43 @@ var edges = new vis.DataSet ([
 var nodes = new vis.DataSet([
   {
     id: '011',
-    label: 'Hist-011: Deciphering America',
+    title:'HIST-011: Deciphering America',
+    label: 'HIST-011',
     courseDescription: 'Deciphering America lorem ipsum',
     pathways: ['gender_sexuality', 'slavery_race', 'politics_rev']
   },
   {
     id: '030',
-    label: 'Hist-030: Emergence of Modern Europe',
+    title:'HIST-030: Emergence of Modern Europe',
+    label: 'HIST-030',
     courseDescription: 'Emergence of Modern Europe stuff',
     pathways: ['politics_rev', 'econ_history', 'war_peace']
   },
   {
     id: '031',
-    label:'Hist-031: Making or Breaking European Hegemony',
+    title:'HIST-031: Making or Breaking European Hegemony',
+    label:'HIST-031',
     courseDescription: 'Making or Breaking European Hegemony',
     pathways: ['war_peace', 'politics_rev', 'intell_culture']
   },
   {
     id: '040',
-    label:'Hist-040: Early Modern Europe, 1450 - 1750',
+    title:'HIST-040: Early Modern Europe, 1450 - 1750',
+    label:'HIST-040',
     courseDescription: 'Early Modern Europe, 1450 - 1750',
     pathways: ['econ_history', 'intell_culture', 'religious_comm']
   },
   {
     id: '048',
-    label:'HIST-048: Rise and Fall of the Russian Empire, 1522 - 1917',
+    title: 'HIST-048: Rise and Fall of the Russian Empire, 1522 - 1917',
+    label: 'HIST-048',
     courseDescription: 'Rise and Fall of the Russian Empire, 1522 - 1917',
     pathways: ['war_peace', 'politics_rev', 'intell_culture']
   },
   {
     id: '999',
-    label:'CLOSER_NODE',
+    title: 'CLOSER_NODE',
+    label: 'CLOSER_NODE',
     courseDescription: 'NOT_A_COURSE',
     pathways: ['Gender and Sex', 'war_peace', 'Slavery and Race', 'religious_comm', 'politics_rev']
   }
