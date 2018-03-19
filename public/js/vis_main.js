@@ -37,10 +37,8 @@ var showDescription = function () {
 *
 */
 network.on('click', function (eventObj) {
-  console.log(eventObj);
-  console.log(nodes.get(eventObj.nodes[0]));
 
-
+  //differenciate events from nodes
   if (eventObj.nodes.length !== 0) {
     var nodeObj = nodes.get(eventObj.nodes[0]);
     var pathways = nodeObj.pathways;
