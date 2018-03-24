@@ -2,7 +2,7 @@
  * to be reviewed
  */
 $('#legend').click(function (e) {
-
+  //
   var $actualDiv = $(e.target).attr('data-pathway');
   var $childElement = $(e.target).parent().attr('data-pathway');
 
