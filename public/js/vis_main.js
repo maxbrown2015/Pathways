@@ -30,6 +30,13 @@ var showDescription = function () {
   $('#course-description').append('<p>' + courseDetail + '</p>');
 };
 
+var clearDescription = function () {
+  $('#pathway1').html('<ul id="path1"></ul>');
+  $('#pathway2').html('<ul id="path2"></ul>');
+  $('#pathway3').html('<ul id="path3"></ul>');
+  $('#course-description').html('<h4>Course Description</h4>');
+};
+
 
 /*
 *If a node is clicked, populate lower half of page with list of courses
@@ -45,10 +52,7 @@ network.on('click', function (eventObj) {
     var currCol = 1;
 
     //clear data in columns and create new lists
-    $('#pathway1').html('<ul id="path1"></ul>');
-    $('#pathway2').html('<ul id="path2"></ul>');
-    $('#pathway3').html('<ul id="path3"></ul>');
-    $('#course-description').html('<h4>Course Description</h4>');
+    clearDescription();
 
     pathways.forEach(function (element) {
       var currPath = pathwaysObj[element];
