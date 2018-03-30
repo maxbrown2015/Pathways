@@ -1,6 +1,7 @@
 /**
  * This file holds the logic for the tour/walkthrough of the page
  */
+
 var tour = new Tour({
   steps: [
     {
@@ -16,7 +17,7 @@ var tour = new Tour({
     },
     {
       backdrop: true,
-      element: '#test-node',
+      element: nodes.get(0),
       title: 'Courses',
       content: 'When a course is clicked, the edges connecting the course to others in the same pathways will appear. The course description will appear along with all of the courses that share the same pathway.'
     },
@@ -27,6 +28,7 @@ var tour = new Tour({
       content: 'You can also view the course descriptions of related courses by clicking on the course titles. Play around with different courses to see what the History Department has to offer!'
     }
   ]});
+
 tour.init();
 
 $('#tour-start').click(function () {
