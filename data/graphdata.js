@@ -1,12 +1,12 @@
 /**
- * This file stores the data required to construct the graph i.e the edges and the nodes. 
- * The edges are stored as an array of objects, whereby the objects store the properties of the edge. 
- * The nodes are stored in a similar manner with the same logic. 
- * 
- * To add a new node simply create a new object with the relevant properties and append it to the array(make 
+ * This file stores the data required to construct the graph i.e the edges and the nodes.
+ * The edges are stored as an array of objects, whereby the objects store the properties of the edge.
+ * The nodes are stored in a similar manner with the same logic.
+ *
+ * To add a new node simply create a new object with the relevant properties and append it to the array(make
  * sure to AVOID SYNTAX ERRORS!!). The same process should be followed when adding new edges.
- * 
- * Creating a new edge, the format is as follows: 
+ *
+ * Creating a new edge, the format is as follows:
  * {
  *  id: (this is a unique number represented as a string),
  *  type: (the edges link course in the same pathway, the type is simply the Pathway that the nodes
@@ -18,7 +18,7 @@
  *     highlight: (same as above, this is just for the color when the edge has been clicked by a user)
  *    }
  *  }
- * 
+ *
  */
 
 var edges = new vis.DataSet ([
@@ -144,7 +144,7 @@ var nodes = new vis.DataSet([
     id: '030',
     title:'HIST-030: Emergence of Modern Europe',
     label: 'HIST-030',
-    courseDescription: 'Emergence of Modern Europe stuff',
+    courseDescription: 'Emergence of Modern Europe stoof',
     pathways: ['politics_rev', 'econ_history', 'war_peace']
   },
   {
@@ -176,5 +176,3 @@ var nodes = new vis.DataSet([
     pathways: ['Gender and Sex', 'war_peace', 'Slavery and Race', 'religious_comm', 'politics_rev']
   }
 ]);
-
-  
