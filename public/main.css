@@ -3,6 +3,17 @@
   padding: 0;
 }
 
+@font-face {
+    font-family: simplifica;
+    src: url(img/SIMPLIFICA-Typeface.ttf);
+}
+
+.parallax {
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 .background-img {
   background-image: url(img/vintage-concrete.png);
@@ -13,14 +24,73 @@
   width: 100%;
 }
 
-#title {
-  color: #74000e;
-  text-shadow: .001px .001px white;
+#parent-container {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%
 }
+
+#introduction-area {
+    background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url(img/european-city.jpg);
+    background-position: center center;
+    background-repeat: repeat;
+
+    height: 750px;
+}
+
+
  #penn-shield-icon {
    width: 50px;
    height: 50px;
  }
+
+ #pathways-header {
+   margin-top: 220px;
+ }
+
+ #title {
+   font-family: simplifica;
+   font-size: 100px;
+   letter-spacing: 10px;
+   color: white;
+ }
+
+ #description-row {
+   margin-top: 10px;
+   margin-bottom: 20px;
+   height: 30px;
+ }
+
+ #description-column {
+ }
+
+ #description-text {
+   font-family: simplifica;
+   font-size: 30px;
+   color: #FFF;
+ }
+
+ #explanation-row {
+
+   margin-top: 200px;
+
+ }
+
+ #explanation-column {
+
+ }
+
+
+ #explanation-text {
+   font-family: simplifica;
+   font-size: 20px;
+   color: white;
+ }
+
 #tour-start-wrapper {
   align-items: center;
   justify-content: center;
@@ -28,7 +98,7 @@
 }
 
 #tour-start {
-  border-radius: 12px;
+  border-radius: 50%;
   color: black;
   border: 2px solid #00144d;
 }
@@ -38,78 +108,81 @@
   transform: translateY(1px);
 }
 
-#legend {
+#legend-row {
   margin-top: 10px;
+  height: 50px;
+
 }
 
-#legend div {
+#legend-row div {
   padding: 0;
   border: 1px;
   height: 40px;
+  background-color: rgba(0, 0, 0, .3);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-#legend div p {
-  margin: 0;
+#legend-row div p {
+  margin: -3px;
   font-weight: bold;
   font-size: 10px;
 }
 
+#graph-area {
 
-#Law-Icon {
-  background-color: #8b4789;
-}
-#Gender-Icon {
-  background-color: #ffff66;
-}
-
-#Borders-Icon {
-  background-color: #00abff;
-}
-
-#Intellectual-Icon {
-  background-color: #ffa500;
-}
-
-#Economic-Icon {
-  background-color: #00FF33;
-}
-
-#War-Icon {
-  background-color:#ffc0cb;
-}
-
-#Religious-Icon {
-  background-color:  #40e0d0;
-}
-
-#Human-Icon {
-  background-color: #a52a2a;
-}
-
-#Historical-Icon {
-  background-color: #008000;
-}
-
-#Slavery-Icon {
-  background-color: #c4a464;
-}
-
-#Space-Icon {
-  background-color: #c792c7;
-}
-
-#Politics-Icon {
-  background-color: #FF6666;
+  margin: 0 auto;
+  height: 750px;
+  width: 100%;
+  background-image:     linear-gradient(
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)
+  ), url(img/white-world-map.jpg);
+  background-position: center center;
+  background-repeat: repeat;
 }
 
 #mynetwork {
+    margin: 0 auto;
+    height: 700px;
     width: 100%;
-    height: 800px;
-    border: 1px solid lightgray;
+
+}
+
+#course-area {
+  width: 100%;
+  height: 700px;
+
+  background-image:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url(img/books-bookshelf.jpg);
+  background-position: center center;
+  background-repeat: repeat;
+
+}
+
+#course-title-row {
+  margin-top: 50px;
+}
+
+#course-title {
+  font-family: simplifica;
+  font-size: 30px;
+  color: white;
+
+}
+
+#course-description-row {
+  margin-top: 50px;
+}
+
+#course-pathways-row {
+  margin-top: 50px;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 #footer-line {
@@ -125,4 +198,80 @@
 #signature-wrapper p {
   font-size: 16px;
   font-weight: bold;
+}
+
+#pathway1 {
+  color: white;
+}
+
+#pathway2 {
+  color: white;
+}
+
+#pathway3 {
+  color: white;
+}
+
+#course-description {
+  color: white;
+}
+
+
+#Law-Icon {
+  color: #8b4789;
+}
+#Gender-Icon {
+  color: #ffff66;
+}
+
+#Borders-Icon {
+  color: #00abff;
+}
+
+#Intellectual-Icon {
+  color: #ffa500;
+}
+
+#Economic-Icon {
+  color: #00FF33;
+}
+
+#War-Icon {
+  color:#ffc0cb;
+}
+
+#Religious-Icon {
+  color: #40e0d0;
+}
+
+#Human-Icon {
+  color: #a52a2a;
+}
+
+#Historical-Icon {
+  color: #008000;
+}
+
+#Slavery-Icon {
+  color: #c4a464;
+}
+
+#Space-Icon {
+  color: #c792c7;
+}
+
+#Politics-Icon {
+  color: #FF6666;
+}
+
+#color-word-HD {
+  color: #c2004d;
+}
+
+#color-word-edges {
+  color: #00abff;
+}
+
+#color-word-pathways {
+  color:#ffc0cb;
 }

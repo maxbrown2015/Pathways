@@ -20,62 +20,99 @@
 </head>
 <body>
     <div class="background-img">
-        <div class="container">
+        <div id="parent-container" class="container">
             <!-- header -->
-            <div class="container-fluid">
-                <div class="row text-center">
-                    <div class="col-lg-2"><!--img id="penn-shield-icon" src="public/img/shield-simple.png">--> </div>
+            <div id=introduction-area class="container-fluid parallax">
+                <div id="pathways-header" class="row text-center">
+                    <div class="col-lg-2"></div>
                     <div class="col-lg-8">
-                        <h3 id="title">Pathways: An Interactive Display of Penn's History Department's Course Offerings</h3>
+                        <h3 id="title">PATHWAYS</h3>
                     </div>
                     <div class="col-lg-2"></div>
                 </div>
+                <div id="description-row"class="row text-center">
+                  <div class="col-lg-2"></div>
+                  <div id="description-column" class="col-lg-8">
+                      <p id ="description-text">An Interactive Guide to the
+                         Penn History Department's Undergraduate Course Offerings.
+                       </p>
+                  </div>
+                  <div class="col-lg-2"></div>
+                </div>
+
+                <div id="explanation-row" class="row text-center">
+                    <div class="col-lg-2"></div>
+                    <div id="explanation-column" class="col-lg-8">
+                        <p id="explanation-text">Below is a graph showcasing
+                          the <span id="color-word-HD">History Department's</span>
+                          courses.
+                          The <span id="color-word-edges">colored edges</span> between the courses correspond to
+                          <span id="color-word-pathways">'pathways'</span>, or linked areas of study.<br>
+                          Get started by clicking on a course below.</p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+
+                <!--
                 <div id="tour-start-wrapper" class="row">
-                    <button id="tour-start">See How It Works</button>
+                    <button id="tour-start">How It Works</button>
                 </div>
-                <div id="legend" class="row">
-                    <div id="Law-Icon" data-pathway="law_society" class="col-sm-1"><p>Law and Society</p></div>
-                    <div id="Gender-Icon"  data-pathway="gender_sexuality" class="col-sm-1"><p>Gender And Sexuality</p></div>
-                    <div id="Borders-Icon" data-pathway="borders_migration" class="col-sm-1"><p>Borders, Migration, Immigration</p></div>
-                    <div id="Intellectual-Icon" data-pathway="intell_culture" class="col-sm-1"><p>Intellectual and Cultural Life</p></div>
-                    <div id="Economic-Icon" data-pathway="econ_history" class="col-sm-1"><p>Economic History</p></div>
-                    <div id="War-Icon" data-pathway="war_peace" class="col-sm-1"><p>War, Peace, Diplomacy</p></div>
-                    <div id="Religious-Icon" data-pathway="religious_comm" class="col-sm-1"><p>Religious Communities</p></div>
-                    <div id="Human-Icon" data-pathway="human_rights" class="col-sm-1"><p>Human Rights</p></div>
-                    <div id="Historical-Icon" data-pathway="historical_methods" class="col-sm-1"><p>Historical Method</p></div>
-                    <div id="Slavery-Icon" data-pathway="slavery_race" class="col-sm-1"><p>Slavery and Race</p></div>
-                    <div id="Space-Icon" data-pathway="space_place" class="col-sm-1"><p>Space and Place</p></div>
-                    <div id="Politics-Icon" data-pathway="politics_rev" class="col-sm-1"><p>Politics and Revolution</p></div>
-                </div>
+              -->
             </div>
 
-            <!-- tour button -->
-            <div id="testTour">
-                <button id="test-node">TEST</button>
-            </div>
 
             <!-- graph area -->
-            <div class="container" id="graphArea">
+
+            <div class="container parallax" id="graph-area">
+
+              <div id="legend-row" class="row">
+                  <div id="Law-Icon" data-pathway="law_society" class="col-sm-1"><p>LAW AND SOCIETY</p></div>
+                  <div id="Gender-Icon"  data-pathway="gender_sexuality" class="col-sm-1"><p>GENDER AND SEXUALITY</p></div>
+                  <div id="Borders-Icon" data-pathway="borders_migration" class="col-sm-1"><p>BORDERS, IMMIGRATION, MIGRATION</p></div>
+                  <div id="Intellectual-Icon" data-pathway="intell_culture" class="col-sm-1"><p>INTELLECTUAL AND CULTURAL LIFE</p></div>
+                  <div id="Economic-Icon" data-pathway="econ_history" class="col-sm-1"><p>ECONOMIC HISTORY</p></div>
+                  <div id="War-Icon" data-pathway="war_peace" class="col-sm-1"><p>WAR, PEACE, DIPLOMACY</p></div>
+                  <div id="Religious-Icon" data-pathway="religious_comm" class="col-sm-1"><p>RELIGIOUS COMMUNITIES</p></div>
+                  <div id="Human-Icon" data-pathway="human_rights" class="col-sm-1"><p>HUMAN RIGHTS</p></div>
+                  <div id="Historical-Icon" data-pathway="historical_methods" class="col-sm-1"><p>HISTORICAL METHODS</p></div>
+                  <div id="Slavery-Icon" data-pathway="slavery_race" class="col-sm-1"><p>SLAVERY AND RACE</p></div>
+                  <div id="Space-Icon" data-pathway="space_place" class="col-sm-1"><p>SPACE AND PLACE</p></div>
+                  <div id="Politics-Icon" data-pathway="politics_rev" class="col-sm-1"><p>POLITICS AND REVOLUTION</p></div>
+              </div>
+
+
                 <div id="mynetwork"></div>
             </div>
 
-
             <!-- course description area-->
-            <div class="container-fluid">
-                <h3>Pathways and Course Descriptions</h3>
-                <div class="row">
-                    <div class="col-md-2" id="pathway1"></div>
-                    <div class="col-md-2" id="pathway2"></div>
-                    <div class="col-md-2" id="pathway3"></div>
-                    <div class="col-md-3" id="course-description"></div>
+            <div id="course-area" class="container-fluid parallax">
+
+                <div id="course-title-row" class="row text-center">
+                  <div class="col-lg-2"><!--img id="penn-shield-icon" src="public/img/shield-simple.png">--> </div>
+                  <div class="col-lg-8">
+                      <h3 id="course-title">HIST-XYZ:<br>LOAD COURSE TITLE FROM JQUERY</h3>
+                  </div>
+                  <div class="col-lg-2"></div>
+                </div>
+                <div id="course-description-row" class="row text-center">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6" id="course-description"></div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div id="course-pathways-row" class="row">
+                  <div class="col-md-4" id="pathway1"></div>
+                  <div class="col-md-4" id="pathway2"></div>
+                  <div class="col-md-4" id="pathway3"></div>
                 </div>
             </div>
 
             <!-- footer -->
+            <!--
             <hr id="footer-line">
             <div id="signature-wrapper" class="row">
                 <p>&lt;/&gt; with &hearts; by Shadrack Lilan and Maxwell Brown</p>
             </div>
+          -->
         </div>
     </div>
 
