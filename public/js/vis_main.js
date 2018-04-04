@@ -16,6 +16,12 @@ var options = {
   height: '100%',
   physics: {
     enabled: false
+  },
+  interaction: {
+    zoomView: false
+  },
+  nodes: {
+    shape: 'dot'
   }
 };
 
