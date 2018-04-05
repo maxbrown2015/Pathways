@@ -29,21 +29,33 @@ var options = {
 var network = new vis.Network(container, data, options);
 
 
-//handler to show the course description when a user clicks on a course
-var showDescription = function () {
-  var courseDetail = $(this).data('description');
-  $('#course-description').html('');
-  $('#course-description').append('<p>' + courseDetail + '</p>');
+
+//function to scroll to final third of page when node is clicked
+var scrollThird = function () {
+  var offsetValue = $('#course-area').offset().top ;
+
+  $('html,body').animate({
+    scrollTop: offsetValue,
+    duration: 'slow',
+    easing: 'linear'
+  });
 };
 
-/*
-var showTitle = function () {
+
+//handler to show the course description when a user clicks on a course
+var showDescription = function () {
   var courseDetail = $(this).data('description');
   $('#course-description').html('<h4>Course Description</h4>');
   $('#course-description').append('<p>' + courseDetail + '</p>');
 };
-*/
 
+//handler for initial click on a node
+var showTitle = function (courseDescription) {
+  $('#course-description').html('<h4>Course Description</h4>');
+  $('#course-description').append('<p>' + courseDescription + '</p>');
+};
+
+//clear format
 var clearDescription = function () {
   $('#pathway1').html('<ul id="path1"></ul>');
   $('#pathway2').html('<ul id="path2"></ul>');
@@ -55,7 +67,6 @@ var clearDescription = function () {
 /*
 *If a node is clicked, populate lower half of page with list of courses
 *that share the same pathways.
-*
 */
 network.on('click', function (eventObj) {
 
@@ -86,5 +97,16 @@ network.on('click', function (eventObj) {
       }
       currCol++;
     });
+
+    //
+    showTitle(nodeObj.courseDescription);
+
+    //move to final third
+    scrollThird();
+
+    
+    var courseDesc = nodeObj.title.split(':');
+    var innerText = courseDesc[0] + ':<br>' + courseDesc[1] + '</br>';
+    $('#course-title').html(innerText);
   }
 });
