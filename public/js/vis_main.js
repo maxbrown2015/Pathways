@@ -69,6 +69,7 @@ var clearDescription = function () {
 *that share the same pathways.
 */
 network.on('click', function (eventObj) {
+  $('#course-area').css('display', 'block');
 
   //differenciate events from nodes
   if (eventObj.nodes.length !== 0) {
