@@ -25,7 +25,13 @@ var options = {
     zoomView: false
   },
   nodes: {
+    font: {
+      color: '#FFFFFF'
+    },
     shape: 'dot'
+  },
+  edges: {
+    width: 2
   }
 };
 
