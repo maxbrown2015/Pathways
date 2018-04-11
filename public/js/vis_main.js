@@ -11,11 +11,15 @@ var data = {
   nodes: nodes,
   edges: edges
 };
+
 var options = {
   width: '100%',
   height: '100%',
   physics: {
     enabled: false
+  },
+  edges: {
+    width: 2
   },
   interaction: {
     zoomView: false
@@ -62,6 +66,17 @@ var clearDescription = function () {
   $('#pathway3').html('<ul id="path3"></ul>');
   $('#course-description').html('');
 };
+
+
+//highlight divs
+var highlightLegend = function () {
+
+};
+
+
+
+
+
 
 
 /*
