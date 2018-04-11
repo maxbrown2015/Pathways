@@ -1,10 +1,11 @@
 /**
  * to be reviewed
  */
-$('#legend').click(function (e) {
+$('#legend-row').click(function (e) {
   //
   var $actualDiv = $(e.target).attr('data-pathway');
   var $childElement = $(e.target).parent().attr('data-pathway');
+  console.log($actualDiv);
 
   //check if the div or the <p> within the div has been clicked
   if ($actualDiv || $childElement ) {
@@ -15,6 +16,7 @@ $('#legend').click(function (e) {
     var re2 = /\d{3}/;
 
     clearDescription();
+
     $('#pathway1').html('<h4>' + wantedNodes[0].name + '</h4>');
 
     for (var i = 1; i < wantedNodes.length; i++) {
@@ -37,6 +39,4 @@ $('#legend').click(function (e) {
   }
 
   network.selectNodes(nodeIDs);
-
-
 });
