@@ -170,17 +170,22 @@
 }
 
 #course-title {
-  font-family: simplifica;
+  font-family: helvitica;
   font-size: 30px;
   color: white;
 
 }
 
 #course-description-row {
+  font-family: helvitica;
+  background-color: rgba(0, 0, 0, .4);
+  font-size: 15px;
   margin-top: 50px;
 }
 
 #course-pathways-row {
+  font-family: helvitica;
+  font-size: 13px;
   margin-top: 50px;
   background-color: rgba(0, 0, 0, .4);
 }
