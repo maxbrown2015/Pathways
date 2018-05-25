@@ -1,5 +1,6 @@
 /**
- * This file holds the logic for drawing the graph and all the interactions with the user.
+ * This file holds the logic for drawing the graph and all the interactions with
+ * the user.
  */
 
 
@@ -35,13 +36,13 @@ var options = {
   }
 };
 
-// initialize the network!
+// initialize the network
 var network = new vis.Network(container, data, options);
 
 
 
 //function to scroll to final third of page when node is clicked
-var scrollThird = function () {
+var scrollToThird = function () {
   var offsetValue = $('#course-area').offset().top ;
 
   $('html,body').animate({
@@ -72,17 +73,6 @@ var clearDescription = function () {
   $('#pathway3').html('<ul id="path3"></ul>');
   $('#course-description').html('');
 };
-
-
-//highlight divs
-var highlightLegend = function () {
-
-};
-
-
-
-
-
 
 
 /*
@@ -123,8 +113,8 @@ network.on('click', function (eventObj) {
     //
     showTitle(nodeObj.courseDescription);
 
-    //move to final third
-    scrollThird();
+    //move to final third after being clicked
+    //scrollToThird();
 
     
     var courseDesc = nodeObj.title.split(':');
