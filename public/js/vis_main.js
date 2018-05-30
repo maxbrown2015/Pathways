@@ -1,9 +1,9 @@
 /**
- * This file holds the logic for drawing the graph and all the interactions with the user.
+ * This file holds the logic for drawing the graph and all the interactions with
+ * the user.
  */
 
-
-// create a network
+// container to hold the network
 var container = document.getElementById('mynetwork');
 
 // provide the data in the vis Dataset format
@@ -11,11 +11,16 @@ var data = {
   nodes: nodes,
   edges: edges
 };
+
 var options = {
   width: '100%',
   height: '100%',
   physics: {
     enabled: false
+  },
+  edges: {
+    width: 2,
+    selectionWidth: 4
   },
   interaction: {
     zoomView: false
@@ -25,19 +30,15 @@ var options = {
       color: '#FFFFFF'
     },
     shape: 'dot'
-  },
-  edges: {
-    width: 2
   }
 };
 
-// initialize the network!
+// initialize the network
 var network = new vis.Network(container, data, options);
 
 
-
-//function to scroll to final third of page when node is clicked
-var scrollThird = function () {
+//function to scroll to final third of page when a node is clicked
+var scrollToThird = function () {
   var offsetValue = $('#course-area').offset().top ;
 
   $('html,body').animate({
@@ -55,13 +56,13 @@ var showDescription = function () {
   $('#course-description').append('<p>' + courseDetail + '</p>');
 };
 
-//handler for initial click on a node
+//handler to show the title of the course corresponding to the clicked node
 var showTitle = function (courseDescription) {
   $('#course-description').html('<h4>Course Description</h4>');
   $('#course-description').append('<p>' + courseDescription + '</p>');
 };
 
-//clear format
+//clear formating in the description area
 var clearDescription = function () {
   $('#pathway1').html('<ul id="path1"></ul>');
   $('#pathway2').html('<ul id="path2"></ul>');
@@ -69,57 +70,66 @@ var clearDescription = function () {
   $('#course-description').html('');
 };
 
+/**
+ * If a node is clicked, populate lower half of page with list of courses that 
+ * share the same pathways.
+ */
+network.on('selectNode', function (eventObj) {
+  $('#course-area').css('display', 'block');
 
-/*
-*If a node is clicked, populate lower half of page with list of courses
-*that share the same pathways.
-*/
-let firstClick = true;
+  var nodeObj = nodes.get(eventObj.nodes[0]);
+  var pathways = nodeObj.pathways;
+  var currCol = 1;
 
-network.on('click', function (eventObj) {
+  //clear data in columns and create new lists
+  clearDescription();
 
-  //differenciate events from nodes
-  if (eventObj.nodes.length !== 0) {
-    var nodeObj = nodes.get(eventObj.nodes[0]);
-    var pathways = nodeObj.pathways;
-    var currCol = 1;
+  pathways.forEach(function (element) {
+    var currPath = pathwaysObj[element];
+    var currSection = '#pathway' + currCol;
 
-    //clear data in columns and create new lists
-    clearDescription();
+    var currLi = '#path' + currCol;
+    var $pathName = $('<h4></h4>').text(currPath[0].name);
+    $(currSection).prepend($pathName);
 
-    pathways.forEach(function (element) {
-      var currPath = pathwaysObj[element];
-      var currSection = '#pathway' + currCol;
-
-      var currLi = '#path' + currCol;
-      var $pathName = $('<h4></h4>').text(currPath[0].name);
-      $(currSection).prepend($pathName);
-
-      //for loop indexed at 1 to prevent access of pathway's name object
-      for (var i = 1; i < currPath.length; i++) {
-        var $li = $('<li></li>').text(currPath[i].label);
-        $li.data('description', currPath[i].courseDescription);
-        //attach click handler.
-        $li.click(showDescription);
-        $(currLi).append($li);
-      }
-      currCol++;
-    });
-
-    //
-    showTitle(nodeObj.courseDescription);
-
-    //move to final third
-    if (firstClick) {
-      scrollThird();
-      firstClick = false;
+    //for loop indexed at 1 to prevent access of pathway's name object
+    for (var i = 1; i < currPath.length; i++) {
+      var $li = $('<li></li>').text(currPath[i].label);
+      $li.data('description', currPath[i].courseDescription);
+      //attach click handler.
+      $li.click(showDescription);
+      $(currLi).append($li);
     }
-    
-    
+    currCol++;
+  });
 
-    
-    var courseDesc = nodeObj.title.split(':');
-    var innerText = courseDesc[0] + ':<br>' + courseDesc[1] + '</br>';
-    $('#course-title').html(innerText);
-  }
+  //
+  showTitle(nodeObj.courseDescription);
+
+  //move to final third after being clicked
+  //scrollToThird();
+
+  var courseDesc = nodeObj.title.split(':');
+  var innerText = courseDesc[0] + ':<br>' + courseDesc[1] + '</br>';
+  $('#course-title').html(innerText);
+});
+
+/**
+ * If an edge is clicked, highlight all edges from a similar pathway (make them
+ * thicker and bolder)
+ */
+network.on('selectEdge', function (eventObj) {
+  //get the clicked edge's object to obtain the type
+  var edgeObj = edges.get(eventObj.edges[0]);
+  var pathwayName = edgeObj.type;
+
+  //retrieve edgeIds of edges that have similar types
+  var edgeItems = edges.getIds({
+    filter: function (element) {
+      return (element.type === pathwayName);
+    }
+  });
+  console.log(edgeItems);
+  //highlight edges
+  network.selectEdges(edgeItems);
 });

@@ -1,21 +1,26 @@
 /**
- * This file stores the data required to construct the graph i.e the edges and the nodes.
- * The edges are stored as an array of objects, whereby the objects store the properties of the edge.
- * The nodes are stored in a similar manner with the same logic.
+ * This file stores the data required to construct the graph i.e the edges and 
+ * the nodes.The edges are stored as an array of objects, whereby the objects 
+ * store the properties of the edge. The nodes are stored in a similar manner 
+ * with the same logic.
  *
- * To add a new node simply create a new object with the relevant properties and append it to the array(make
- * sure to AVOID SYNTAX ERRORS!!). The same process should be followed when adding new edges.
+ * To add a new node simply create a new object with the relevant properties and
+ * append it to the array (make sure to AVOID SYNTAX ERRORS!!). The same process
+ * should be followed when adding new edges.
  *
  * Creating a new edge, the format is as follows:
  * {
  *  id: (this is a unique number represented as a string),
- *  type: (the edges link course in the same pathway, the type is simply the Pathway that the nodes
- *        to be connected belong to. This disitinction is useful when coloring the edges to indicate different pathways),
+ *  type: (the edges link course in the same pathway, the type is simply the 
+ *         Pathway that the nodes to be connected belong to. This disitinction 
+ *         is useful when coloring the edges to indicate different pathways),
  *  from: (this is the ID of the node to be connected)
  *  to: (this is the ID of the other node to be connected)
  *  color: {
- *    {color: (the color of the edge. Each pathway has it's own unique color. See key below for the color mappings)
- *     highlight: (same as above, this is just for the color when the edge has been clicked by a user)
+ *    {color: (the color of the edge. Each pathway has it's own unique color. 
+ *             See key below for the color mappings)
+ *     highlight: (same as above, this is just for the color when the edge has 
+ *                 been clicked by a user)
  *    }
  *  }
  *
@@ -24,7 +29,7 @@
 var edges = new vis.DataSet ([
   {
     id: '0',
-    type: 'Gender_and_Sexuality',
+    type: 'gender_sexuality',
     from: '011',
     to: '145',
     color : {color: '#ffff66', highlight: '#ffff66' }
@@ -32,7 +37,7 @@ var edges = new vis.DataSet ([
 
   {
     id: '1',
-    type: 'Slavery_and_Race',
+    type: 'slavery_race',
     from: '011',
     to: '070',
     color : {color: '#c4a464', highlight: '#c4a464'}
@@ -40,7 +45,7 @@ var edges = new vis.DataSet ([
 
   {
     id: '2',
-    type: 'Politics_and_Revolution',
+    type: 'politics_rev',
     from: '011',
     to: '030',
     color : {color: '#FF6666', highlight: '#FF6666'}
@@ -48,84 +53,84 @@ var edges = new vis.DataSet ([
 
   {
     id: '3',
-    type: 'Economic_History',
+    type: 'econ_history',
     from: '030',
     to: '040',
     color : {color: '#00FF33', highlight: '#00FF33'}
   },
   {
     id: '4',
-    type: 'War_Peace_and_Diplomacy',
+    type: 'war_peace',
     from: '030',
     to: '031',
     color : {color: '#ffc0cb', highlight: '#ffc0cb'}
   },
   {
     id: '5',
-    type: 'Politics_and_Revolution',
+    type: 'politics_rev',
     from: '030',
     to: '031',
     color : {color: '#FF6666', highlight: '#FF6666'}
   },
   {
     id: '6',
-    type: 'Intellectual_and_Cultural_Life',
+    type: 'intell_culture',
     from: '031',
     to: '040',
     color : {color: '#ffa500', highlight: '#ffa500'}
   },
   {
     id: '7',
-    type: 'War_Peace_and_Diplomacy',
+    type: 'war_peace',
     from: '031',
     to: '048',
     color : {color: '#ffc0cb', highlight: '#ffc0cb'}
   },
   {
     id: '8',
-    type: 'Politics_and_Revolution',
+    type: 'politics_rev',
     from: '031',
     to: '048',
     color : {color: '#FF6666', highlight: '#FF6666'}
   },
   {
     id: '9',
-    type: 'Intellectual_and_Cultural_Life',
+    type: 'intell_culture',
     from: '040',
     to: '048',
     color : {color: '#ffa500', highlight: '#ffa500'}
   },
   {
     id: '10',
-    type: 'Economic_History',
+    type: 'econ_history',
     from: '040',
     to: '049',
     color : {color: '#00FF33', highlight: '#00FF33'}
   },
   {
     id: '11',
-    type: 'Religious_Communities',
+    type: 'religious_comm',
     from: '040',
     to: '050',
     color : {color: '#40e0d0', highlight: '#40e0d0'}
   },
   {
     id: '12',
-    type: 'Intellectual_and_Cultural_Life',
+    type: 'intell_culture',
     from: '048',
     to: '049',
     color : {color: '#ffa500', highlight: '#ffa500'}
   },
   {
     id: '13',
-    type: 'War_Peace_and_Diplomacy',
+    type: 'war_peace',
     from: '048',
     to: '051',
     color : {color: '#ffc0cb', highlight: '#ffc0cb'}
   },
   {
     id: '14',
-    type: 'Politics_and_Revolution',
+    type: 'politics_rev',
     from: '048',
     to: '049',
     color : {color: '#FF6666', highlight: '#FF6666'}

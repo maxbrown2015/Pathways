@@ -10,7 +10,7 @@
         "dev": "lite-server"
     },
     "dependencies": {
-        "eslint": "^4.19.0"
+        "eslint": "^4.19.1"
     },
     "devDependencies": {
         "lite-server": "^2.3.0"
