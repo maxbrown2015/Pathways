@@ -1,4 +1,5 @@
-=body html {
+body html {
+  font-size: 100%;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +20,6 @@
   background-image: url(img/vintage-concrete.png);
   background-position: center center;
   background-repeat: repeat;
-
   height: 100%;
   width: 100%;
 }
@@ -38,7 +38,6 @@
     ), url(img/european-city.jpg);
     background-position: center center;
     background-repeat: repeat;
-
     height: 750px;
 }
 
@@ -171,17 +170,29 @@
 }
 
 #course-title {
-  font-family: simplifica;
-  font-size: 30px;
+  font-family: helvitica;
+  font-size: 2em;
   color: white;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
 #course-description-row {
+  font-family: helvitica;
+  font-size: 1em;
   margin-top: 50px;
 }
 
+#course-description {
+  background-color: rgba(0, 0, 0, .4);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #course-pathways-row {
+  font-family: helvitica;
+  font-size: 13px;
   margin-top: 50px;
   background-color: rgba(0, 0, 0, .4);
 }

@@ -70,7 +70,6 @@ var clearDescription = function () {
   $('#course-description').html('');
 };
 
-
 /**
  * If a node is clicked, populate lower half of page with list of courses that 
  * share the same pathways.
