@@ -74,6 +74,8 @@ var clearDescription = function () {
 *If a node is clicked, populate lower half of page with list of courses
 *that share the same pathways.
 */
+let firstClick = true;
+
 network.on('click', function (eventObj) {
 
   //differenciate events from nodes
@@ -108,7 +110,12 @@ network.on('click', function (eventObj) {
     showTitle(nodeObj.courseDescription);
 
     //move to final third
-    scrollThird();
+    if (firstClick) {
+      scrollThird();
+      firstClick = false;
+    }
+    
+    
 
     
     var courseDesc = nodeObj.title.split(':');
