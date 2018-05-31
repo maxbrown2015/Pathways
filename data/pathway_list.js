@@ -9,20 +9,24 @@
 //Remaining pathways to be added later.
 var pathwaysObj = {
   law_society: [
-    {name: 'Law and Society'}
+    {name: 'Law and Society'},
+    { color: '#8b4789'}
   ],
   gender_sexuality: [
     { name: 'Gender and Sexuality'},
+    { color: '#ffff66'},
     { label: 'HIST-011: Deciphering America',
       courseDescription: 'This course examines American history from the first contacts of the indigenous peoples of North America with European settlers to our own times by focusing on a few telling moments in this history. The course treats twelve of these moments. Each unit begins with a specific primary document, historical figure, image, location, year, or cultural artifact to commence the delving into the American past. Some of these icons are familiar, but the ensuing deciphering will render them as more complicated; some are unfamiliar, but they will emerge as absolutely telling. The course meets each week for two 50-minute team-taught lectures and once recitation session. Course requirements include: in-class midterm and final exams; three short paper assignments; and punctual attendance and participation in recitations.'},
     { label: 'HIST-145: Discovering the Middle Ages',
       courseDescription: 'Discovering the Middle Ages Description'},
   ],
   borders_migration: [
-    {name: 'Borders, Migration and Immigration'}
+    {name: 'Borders, Migration and Immigration'},
+    { color: '#00abff'}
   ],
   intell_culture: [
     { name: 'Intellectual and Cultural Life'},
+    { color: '#ffa500'},
     { label: 'HIST-031: Making or Breaking European Hegemony',
       courseDescription: 'Hist 031 will trace the dramatic rise and fall of Europe\'s global hegemony during the period roughly from 1450 to 1950. Among the major themes we will examine are: states and power, borders and resistance, race and genocide, economies and oppression, ideas and revolution, the building and change of hierarchies of gender and power. Truly, a dramatic story. The objectives of the course are: 1) To serve as an introduction to the study of history for majors and non-majors alike, and to teach the critical analysis of historical sources; 2) to teach substantive knowledge of European history; 3) to provide a foundation for further study of the European past. No previous background in European or World history is required.'},
     { label: 'HIST-040: Early Modern Europe, 1450 - 1750',
@@ -35,6 +39,7 @@ var pathwaysObj = {
   ],
   econ_history: [
     { name: 'Economic History'},
+    { color: '#00FF33'},
     { label: 'HIST-030: Emergence of Modern Europe',
       courseDescription: 'Emergence of Modern Europe stuff'},
     { label: 'HIST-040: Early Modern Europe, 1450 - 1750',
@@ -45,6 +50,7 @@ var pathwaysObj = {
   ],
   war_peace: [
     { name: 'War, Peace and Diplomacy'},
+    { color: '#ffc0cb'},
     { label: 'HIST-030: Emergence of Modern Europe',
       courseDescription: 'Emergence of Modern Europe stuff'},
     { label: 'HIST-031: Making or Breaking European Hegemony',
@@ -57,29 +63,35 @@ var pathwaysObj = {
   ],
   religious_comm: [
     { name: 'Religious Communities'},
+    { color: '#40e0d0'},
     { label: 'HIST-040: Early Modern Europe, 14\'50 - 1750',
       courseDescription: 'Early Modern Europe, 1450 - 1750'},
     { label: 'HIST-050: British Isles',
       courseDescription: 'British Isles Description Goes Here'}
   ],
   human_rights: [
-    { name: 'Human Rights/Humanitarianism'}
+    { name: 'Human Rights/Humanitarianism'},
+    { color: '#a52a2a'}
   ],
   historical_methods: [
-    { name: 'Historical Methods'}
+    { name: 'Historical Methods'},
+    { color: '#008000'},
   ],
   slavery_race: [
     { name: 'Slavery and Race'},
+    { color: '#c4a464'},
     { label: 'HIST-011: Deciphering America',
       courseDescription: 'This course examines American history from the first contacts of the indigenous peoples of North America with European settlers to our own times by focusing on a few telling moments in this history. The course treats twelve of these moments. Each unit begins with a specific primary document, historical figure, image, location, year, or cultural artifact to commence the delving into the American past. Some of these icons are familiar, but the ensuing deciphering will render them as more complicated; some are unfamiliar, but they will emerge as absolutely telling. The course meets each week for two 50-minute team-taught lectures and once recitation session. Course requirements include: in-class midterm and final exams; three short paper assignments; and punctual attendance and participation in recitations.'},
     { label: 'HIST-070: HIST-070: Colonial Latin America',
       courseDescription: 'Colonial Latin America Description Goes Here'}
   ],
   space_place: [
-    { name: 'Space and Place(urban, environmental history'}
+    { name: 'Space and Place(urban, environmental history'},
+    {color: '#c792c7' }
   ],
   politics_rev: [
     { name: 'Politics and Revolution'},
+    { color: '#FF6666'},
     { label: 'HIST-011: Deciphering America',
       courseDescription: 'This course examines American history from the first contacts of the indigenous peoples of North America with European settlers to our own times by focusing on a few telling moments in this history. The course treats twelve of these moments. Each unit begins with a specific primary document, historical figure, image, location, year, or cultural artifact to commence the delving into the American past. Some of these icons are familiar, but the ensuing deciphering will render them as more complicated; some are unfamiliar, but they will emerge as absolutely telling. The course meets each week for two 50-minute team-taught lectures and once recitation session. Course requirements include: in-class midterm and final exams; three short paper assignments; and punctual attendance and participation in recitations.'},
     { label: 'HIST-030: Emergence of Modern Europe',
