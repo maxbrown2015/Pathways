@@ -52,23 +52,27 @@ var scrollToThird = function () {
 //handler to show the course description when a user clicks on a course
 var showDescription = function () {
   var courseDetail = $(this).data('description');
-  $('#course-description').html('<h4>Course Description</h4>');
-  $('#course-description').append('<p>' + courseDetail + '</p>');
+ // $('#course-description-header').html('Course Description');
+  $('#course-description-body').html(courseDetail);
 };
 
 //handler to show the title of the course corresponding to the clicked node
-var showTitle = function (courseDescription) {
-  $('#course-description').html('<h4>Course Description</h4>');
-  $('#course-description').append('<p>' + courseDescription + '</p>');
+var showInitialDescription = function (courseDescription) {
+  console.log(courseDescription);
+ // $('#course-description-header').html('Course Description');
+  $('#course-description-body').html(courseDescription);
 };
 
 //clear formating in the description area
+
 var clearDescription = function () {
-  $('#pathway1').html('<ul id="path1"></ul>');
-  $('#pathway2').html('<ul id="path2"></ul>');
-  $('#pathway3').html('<ul id="path3"></ul>');
-  $('#course-description').html('');
-};
+  $('#path-list-1').html('');
+  $('#path-list-2').html('');
+  $('#path-list-3').html('');
+  //$('#course-description-header').html('');
+  $('#course-description-body').html('');
+}
+
 
 /**
  * If a node is clicked, populate lower half of page with list of courses that 
@@ -86,14 +90,17 @@ network.on('selectNode', function (eventObj) {
 
   pathways.forEach(function (element) {
     var currPath = pathwaysObj[element];
-    var currSection = '#pathway' + currCol;
+    var currSection = "#pathway-" + currCol;
+    var currSectionHeader = "#pathway-header-" + currCol;
 
-    var currLi = '#path' + currCol;
-    var $pathName = $('<h4></h4>').text(currPath[0].name);
-    $(currSection).prepend($pathName);
-
-    //for loop indexed at 1 to prevent access of pathway's name object
-    for (var i = 1; i < currPath.length; i++) {
+    var currLi = '#path-list-' + currCol;
+    
+    var currColor = currPath[1].color;
+    $(currSection).css('color', currColor);
+    $(currSectionHeader).html(currPath[0].name);
+  
+    //for loop indexed at 2 to prevent access of pathway's name and color object
+    for (var i = 2; i < currPath.length; i++) {
       var $li = $('<li></li>').text(currPath[i].label);
       $li.data('description', currPath[i].courseDescription);
       //attach click handler.
@@ -103,8 +110,7 @@ network.on('selectNode', function (eventObj) {
     currCol++;
   });
 
-  //
-  showTitle(nodeObj.courseDescription);
+  showInitialDescription(nodeObj.courseDescription);
 
   //move to final third after being clicked
   //scrollToThird();

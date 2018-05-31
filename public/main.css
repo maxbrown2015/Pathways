@@ -9,6 +9,10 @@ body html {
     src: url(img/SIMPLIFICA-Typeface.ttf);
 }
 
+@font-face {
+  font-family: raleway;
+  src: url(img/Raleway-Light.ttf);
+}
 .parallax {
 	background-attachment: fixed;
 	background-position: center;
@@ -48,7 +52,7 @@ body html {
  }
 
  #pathways-header {
-   margin-top: 220px;
+   margin-top: 100px;
  }
 
  #title {
@@ -64,10 +68,6 @@ body html {
    height: 30px;
  }
 
- #description-column {
-   
- }
-
  #description-text {
    font-family: simplifica;
    font-size: 30px;
@@ -75,9 +75,7 @@ body html {
  }
 
  #explanation-row {
-
-   margin-top: 200px;
-
+   margin-top: 100px;
  }
 
  #explanation-column {
@@ -148,7 +146,6 @@ body html {
     margin: 0 auto;
     height: 700px;
     width: 100%;
-
 }
 
 #course-area {
@@ -170,58 +167,79 @@ body html {
 }
 
 #course-title {
-  font-family: helvitica;
-  font-size: 2em;
+  font-family: simplifica;
+  font-size: 3em;
+  letter-spacing: 0.04em;
   color: white;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 
 }
 
 #course-description-row {
-  font-family: helvitica;
-  font-size: 1em;
-  margin-top: 50px;
+  font-family: raleway;
+  margin-top: 25px;
 }
 
 #course-description {
-  background-color: rgba(0, 0, 0, .4);
-  margin-right: auto;
-  margin-left: auto;
+  font-size: 1.25em;
+  /*background-color: rgba(0, 0, 0, .4);*/
 }
 
+#course-description-header {
+  text-align: center;
+}
+
+#course-description-body {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: justify;
+}
+
+
 #course-pathways-row {
-  font-family: helvitica;
-  font-size: 13px;
+  font-family: raleway;
+  font-size: 1em;
   margin-top: 50px;
   background-color: rgba(0, 0, 0, .4);
 }
 
-#footer-line {
-  width: 75%;
-  border-top: 1px dashed #8c8b8b;
-  border-bottom: 1px dashed #fff;
+
+#pathway-1 {
 }
 
-#signature-wrapper {
+#pathway-2 {
+}
+
+#pathway-3 {
+}
+
+.list-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#pathway-header-1 {
   text-align: center;
 }
 
-#signature-wrapper p {
-  font-size: 16px;
-  font-weight: bold;
+#pathway-header-2 {
+  text-align: center;
 }
 
-#pathway1 {
-  color: white;
+#pathway-header-3 {
+  text-align: center;
 }
 
-#pathway2 {
-  color: white;
+
+#path-list-1 {
 }
 
-#pathway3 {
-  color: white;
+#path-list-2 {
+}
+
+#path-list-3 {
 }
 
 #course-description {
@@ -285,4 +303,32 @@ body html {
 
 #color-word-pathways {
   color:#ffc0cb;
+}
+
+#color-word-HD {
+  color: #c2004d;
+}
+
+#color-word-edges {
+  color: #00abff;
+}
+
+#color-word-pathways {
+  color:#ffc0cb;
+}
+
+
+#footer-line {
+  width: 75%;
+  border-top: 1px dashed #8c8b8b;
+  border-bottom: 1px dashed #fff;
+}
+
+#signature-wrapper {
+  text-align: center;
+}
+
+#signature-wrapper p {
+  font-size: 16px;
+  font-weight: bold;
 }
