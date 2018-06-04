@@ -45,22 +45,49 @@ body html {
     height: 750px;
 }
 
+#top-buffer {
+  height: 5%;
+}
 
- #penn-shield-icon {
-   width: 50px;
-   height: 50px;
- }
+.top-div-wrapper-row {
+  height: 31.66%;
+}
+
+.top-col-wrapper {
+  height: 100%;
+}
+
+.top-div-row {
+  height: 50%;
+}
+
+.pathway-button {
+  height: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  font-family: simplifica;
+  font-size: 1.4em;
+
+}
+#title-wrapper {
+  height: 100%;
+  text-align: center;
+}
+
+#pathways-title {
+  font-family: simplifica;
+  font-size: 6em;
+  letter-spacing: .2em;
+  color: white;
+  
+}
 
  #pathways-header {
    margin-top: 100px;
  }
 
- #title {
-   font-family: simplifica;
-   font-size: 100px;
-   letter-spacing: 10px;
-   color: white;
- }
 
  #description-row {
    margin-top: 10px;
@@ -68,20 +95,15 @@ body html {
    height: 30px;
  }
 
- #description-text {
+ #pathways-subtitle {
    font-family: simplifica;
-   font-size: 30px;
-   color: #FFF;
+   font-size: 2em;
+   color: white;
  }
 
  #explanation-row {
    margin-top: 100px;
  }
-
- #explanation-column {
-
- }
-
 
  #explanation-text {
    font-family: simplifica;
@@ -246,6 +268,57 @@ body html {
   color: white;
 }
 
+
+#law-button {
+  background: linear-gradient(to right, rgb(139, 71, 137, .7), rgb(235, 209, 234, .2));
+}
+
+#law-button:active {
+  background: rgb(139, 71, 137, .7);
+}
+
+#gender-button {
+  background: linear-gradient(to right, rgb(255, 255, 102, .7), rgb(245, 245, 209, .45));
+}
+
+#borders-button {
+  background: linear-gradient(to left, rgb(0, 171, 255, .7), rgb(219, 243, 255, .2));
+}
+
+#intellec-button {
+  background: linear-gradient(to left, rgb(255, 165, 0, .7), rgb(241, 222, 187, .45));
+}
+
+#economic-button {
+  background: linear-gradient(to right, rgb(0, 255, 51, .7), rgba(207, 241, 184, 0.45));
+}
+
+#war-button {
+  background: linear-gradient(to right, rgb(255, 192, 203, .7), rgb(255, 234, 238, .3));
+}
+
+#religious-button {
+  background: linear-gradient(to left,rgb(64, 224, 208, .7),rgb(207, 255, 250, .3));
+}
+
+#human-button {
+  background: linear-gradient(to left, rgb(165, 42, 42, .7), rgb(255, 185, 185, .2));
+}
+
+#historical-button {
+  background: linear-gradient(to right, rgb(0, 128, 0, .7), rgb(174, 255, 174, .3));
+}
+
+#slavery-button {
+  background: linear-gradient(to right, rgb(117, 99, 196, .7), rgb(212, 202, 255, .2));
+}
+
+#space-button {
+  background: linear-gradient(to left, rgb(199, 146, 199, .7), rgb(255, 218, 255, .3));
+}
+#politics-button {
+  background: linear-gradient(to left, rgb(255, 102, 102, .7), rgb(247, 183, 183, .2));
+}
 #Law-Icon {
   color: #8b4789;
 }
@@ -282,7 +355,7 @@ body html {
 }
 
 #Slavery-Icon {
-  color: #c4a464;
+  color: #7563c4;
 }
 
 #Space-Icon {
