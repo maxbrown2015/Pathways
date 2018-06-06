@@ -13,14 +13,17 @@ var pathway_descriptions = {
     "politics-button": "politics stuff"
 };
 
+var dummy_text = "Laws form the foundation of every society, from Sumerian city-states to international empires. Courses in this pathway explore the historical context of legal systems, their genesis, evolutions, and impact on cultures. "
+
 $('.pathway-button').click(function (e) {
     //get the ID of the selected 
     var eleId = $(this).attr("id");
     //get pathway description from the slected id
-    var text = pathway_descriptions[eleId];
+    //var text = pathway_descriptions[eleId];
+    var text = dummy_text;
     //set text area to description value
     var pathwayDescriptionText = document.getElementById("pathway-description-text");
-    $(pathwayDescriptionText).text(text);
+    fadeDivOutAndIn(pathwayDescriptionText, text);
     //change color to active
     toggleActiveColors(this);
 });
@@ -28,9 +31,11 @@ $('.pathway-button').click(function (e) {
 /*
 */
 let toggleActiveColors = function(selectedID) {
+    //get keys from list to toggle all colors on or off
     let keys = Object.keys(pathway_descriptions);
     for (var i in keys) {
         var id = document.getElementById(keys[i]);
+        //if id is the clicked on one
         if (id == selectedID) {
             $(id).toggleClass('active', true);
         }
@@ -39,6 +44,12 @@ let toggleActiveColors = function(selectedID) {
         }
     }
 };
+
+let fadeDivOutAndIn = function(selector, text) {
+    $(selector).fadeOut(500, function() {
+        $(this).html(text)
+    }).fadeIn(500);
+}
 
 
 
