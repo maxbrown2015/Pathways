@@ -187,7 +187,8 @@ body html {
 
 #course-area {
   width: 100%;
-  height: 700px;
+  min-height: 700px;
+  max-height: 2000px;
   display: none;
   background-image:
   linear-gradient(
@@ -240,16 +241,6 @@ body html {
   font-size: 1em;
   margin-top: 50px;
   background-color: rgba(0, 0, 0, .4);
-}
-
-
-#pathway-1 {
-}
-
-#pathway-2 {
-}
-
-#pathway-3 {
 }
 
 .list-wrapper {
