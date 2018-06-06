@@ -65,8 +65,8 @@ var showInitialDescription = function (courseDescription) {
 var updatePathwayLists = function(pathway, currPath) {
   $(pathway).fadeOut(function() {
     $(pathway).empty();
-    //for loop indexed at 2 to prevent access of pathway's name and color object
-    for (var i = 2; i < currPath.length; i++) {
+    //for loop indexed at 1 to prevent access of pathway's name and color object
+    for (var i = 1; i < currPath.length; i++) {
       var $li = $('<li></li>').text(currPath[i].label);
       $li.data('description', currPath[i].courseDescription);
       //attach click handler.
@@ -79,7 +79,7 @@ var updatePathwayLists = function(pathway, currPath) {
 
 
 
-
+var firstTime = true;
 
 
 /**
@@ -100,20 +100,24 @@ network.on('selectNode', function (eventObj) {
     var currPath = pathwaysObj[element];
     var currSection = "#pathway-" + currCol;
     var currSectionHeader = "#pathway-header-" + currCol;
-
     var currLi = '#path-list-' + currCol;
-    
-    var currColor = currPath[1].color;
+    var currColor = currPath[0].color.color;
+
     $(currSection).css('color', currColor);
     fadeDivOutAndIn(currSectionHeader, currPath[0].name);
     updatePathwayLists(currLi, currPath);
     currCol++;
+
   });
 
   showInitialDescription(nodeObj.courseDescription);
 
   //move to final third after being clicked
-  //scrollToThird();
+  if (firstTime) {
+    scrollToThird();
+    firstTime = false;
+  }
+  
 
   var courseDesc = nodeObj.title.split(':');
   var innerText = courseDesc[0] + ':<br>' + courseDesc[1] + '</br>';
