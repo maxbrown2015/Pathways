@@ -23,48 +23,86 @@
         <div id="parent-container" class="container">
             <!-- header -->
             <div id="introduction-area" class="container-fluid parallax">
-                <div id="pathways-header" class="row text-center">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8">
-                        <h3 id="title">PATHWAYS</h3>
+                <div id="top-buffer" class="row"></div>
+                <div class="row top-div-wrapper-row">
+                        <div class="col-lg-2 top-col-wrapper">
+                            <div class="row top-div-row">
+                                <div id="law-button" class="col-sm-12 pathway-button">Law and Society</div>
+                            </div>
+                            <div class="row top-div-row">
+                                <div id="gender-button" class="col-sm-12 pathway-button">Gender and Sexuality</div>
+                            </div>
+                        </div>
+                    <div id="title-wrapper" class="col-lg-8 top-col-wrapper">
+                        <h1 id="pathways-title">PATHWAYS</h1>
+                        <p id="pathways-subtitle">An Interactive Guide to the
+                                Penn History Department's Undergraduate Course Offerings</p>
                     </div>
-                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2 top-col-wrapper">
+                        <div class="row top-div-row">
+                            <div id="borders-button" class="col-sm-12 pathway-button">Borders, Immigration, Migration</div>
+                        </div>
+                        <div class="row top-div-row">
+                            <div id="intellec-button" class="col-sm-12 pathway-button">Intellectual and Cultural Life</div>
+                        </div>
+                    </div>
                 </div>
-                <div id="description-row" class="row text-center">
-                  <div class="col-lg-2"></div>
-                  <div id="description-column" class="col-lg-8">
-                      <p id ="description-text">An Interactive Guide to the
-                         Penn History Department's Undergraduate Course Offerings
-                       </p>
-                  </div>
-                  <div class="col-lg-2"></div>
+                <div class="row top-div-wrapper-row">
+                <div class="col-lg-2 top-col-wrapper">
+                    <div class="row top-div-row">
+                            <div id="economic-button" class="col-sm-12 pathway-button">Economic History</div>
+                    </div>
+                    <div class="row top-div-row">
+                        <div id="war-button" class="col-sm-12 pathway-button">War, Peace, Diplomacy</div>
+                    </div>
                 </div>
-
-                <div id="explanation-row" class="row text-center">
-                    <div class="col-lg-2"></div>
-                    <div id="explanation-column" class="col-lg-8">
+                    <div id="page-description-wrapper" class="col-lg-8 top-col-wrapper">
                         <p id="explanation-text">Below is a graph showcasing
-                          the <span id="color-word-HD">History Department's</span>
-                          courses.
-                          The <span id="color-word-edges">colored edges</span> between the courses correspond to
-                          <span id="color-word-pathways">'pathways'</span>, or linked areas of study.<br>
-                          Get started by clicking on a course below.</p>
+                            the <span id="color-word-HD">History Department's</span>
+                            courses.
+                            The <span id="color-word-edges">colored edges</span> between the courses correspond to
+                            <span id="color-word-pathways">'pathways'</span>, or linked areas of study.<br>
+                            Get started by clicking on a course below.
+                        </p>
                     </div>
-                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2 top-col-wrapper">
+                        <div class="row top-div-row">
+                            <div id="religious-button" class="col-sm-12 pathway-button">Religious Communities</div>
+                        </div>
+                        <div class="row top-div-row">
+                            <div id="human-button" class="col-sm-12 pathway-button">Human Rights</div>
+                        </div>
+                    </div>
                 </div>
-
-                <!--
-                <div id="tour-start-wrapper" class="row">
-                    <button id="tour-start">How It Works</button>
-                </div>
-              -->
+                <div class="row top-div-wrapper-row">
+                        <div class="col-lg-2 top-col-wrapper">
+                            <div class="row top-div-row">
+                                    <div id="historical-button" class="col-sm-12 pathway-button">Historical Methods</div>
+                            </div>
+                            <div class="row top-div-row">
+                                <div id="slavery-button" class="col-sm-12 pathway-button">Slavery and Race</div>
+                            </div>
+                        </div>
+                            <div class="col-lg-1"></div>
+                            <div id="pathway-description-wrapper" class="col-lg-6 top-col-wrapper">
+                                <p id="pathway-description-text"></p>
+                            </div>
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-2 top-col-wrapper">
+                                <div class="row top-div-row">
+                                    <div id="space-button" class="col-sm-12 pathway-button">Space and Place</div>
+                                </div>
+                                <div class="row top-div-row">
+                                    <div id="politics-button" class="col-sm-12 pathway-button">Politics and Revolution</div>
+                                </div>
+                            </div>
+                        </div>
             </div>
 
 
             <!-- graph area -->
 
             <div class="container parallax" id="graph-area">
-
               <div id="legend-row" class="row">
                   <div id="Law-Icon" data-pathway="law_society" class="col-sm-1"><p>LAW AND SOCIETY</p></div>
                   <div id="Gender-Icon"  data-pathway="gender_sexuality" class="col-sm-1"><p>GENDER AND SEXUALITY</p></div>
@@ -79,8 +117,6 @@
                   <div id="Space-Icon" data-pathway="space_place" class="col-sm-1"><p>SPACE AND PLACE</p></div>
                   <div id="Politics-Icon" data-pathway="politics_rev" class="col-sm-1"><p>POLITICS AND REVOLUTION</p></div>
               </div>
-
-
                 <div id="mynetwork"></div>
             </div>
 
@@ -141,5 +177,6 @@
     <script type="text/javascript" src="public/js/vis_main.js"></script>
     <script src="public/js/tour.js"></script>
     <script type="text/javascript" src="public/js/legendEvents.js"></script>
+    <script type="text/javascript" src="public/js/pathway_description_events.js"></script>
 </body>
 </html>

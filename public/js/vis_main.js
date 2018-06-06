@@ -52,26 +52,34 @@ var scrollToThird = function () {
 //handler to show the course description when a user clicks on a course
 var showDescription = function () {
   var courseDetail = $(this).data('description');
- // $('#course-description-header').html('Course Description');
-  $('#course-description-body').html(courseDetail);
+  fadeDivOutAndIn('#course-description-body', courseDetail);
 };
 
 //handler to show the title of the course corresponding to the clicked node
 var showInitialDescription = function (courseDescription) {
-  console.log(courseDescription);
- // $('#course-description-header').html('Course Description');
-  $('#course-description-body').html(courseDescription);
+  //console.log(courseDescription);
+  fadeDivOutAndIn('#course-description-body', courseDescription);
 };
 
-//clear formating in the description area
 
-var clearDescription = function () {
-  $('#path-list-1').html('');
-  $('#path-list-2').html('');
-  $('#path-list-3').html('');
-  //$('#course-description-header').html('');
-  $('#course-description-body').html('');
-}
+var updatePathwayLists = function(pathway, currPath) {
+  $(pathway).fadeOut(function() {
+    $(pathway).empty();
+    //for loop indexed at 2 to prevent access of pathway's name and color object
+    for (var i = 2; i < currPath.length; i++) {
+      var $li = $('<li></li>').text(currPath[i].label);
+      $li.data('description', currPath[i].courseDescription);
+      //attach click handler.
+      $li.click(showDescription);
+      //$(pathway).append($li);
+      $($li).hide().appendTo(pathway).fadeIn();
+    }
+  }).fadeIn();
+};
+
+
+
+
 
 
 /**
@@ -86,7 +94,7 @@ network.on('selectNode', function (eventObj) {
   var currCol = 1;
 
   //clear data in columns and create new lists
-  clearDescription();
+  //clearDescription();
 
   pathways.forEach(function (element) {
     var currPath = pathwaysObj[element];
@@ -97,16 +105,8 @@ network.on('selectNode', function (eventObj) {
     
     var currColor = currPath[1].color;
     $(currSection).css('color', currColor);
-    $(currSectionHeader).html(currPath[0].name);
-  
-    //for loop indexed at 2 to prevent access of pathway's name and color object
-    for (var i = 2; i < currPath.length; i++) {
-      var $li = $('<li></li>').text(currPath[i].label);
-      $li.data('description', currPath[i].courseDescription);
-      //attach click handler.
-      $li.click(showDescription);
-      $(currLi).append($li);
-    }
+    fadeDivOutAndIn(currSectionHeader, currPath[0].name);
+    updatePathwayLists(currLi, currPath);
     currCol++;
   });
 
@@ -117,7 +117,7 @@ network.on('selectNode', function (eventObj) {
 
   var courseDesc = nodeObj.title.split(':');
   var innerText = courseDesc[0] + ':<br>' + courseDesc[1] + '</br>';
-  $('#course-title').html(innerText);
+  fadeDivOutAndIn('#course-title', innerText);
 });
 
 /**
