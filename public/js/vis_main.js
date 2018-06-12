@@ -6,7 +6,6 @@
 // container to hold the network
 var container = document.getElementById('mynetwork');
 
-// provide the data in the vis Dataset format
 var data = {
   nodes: nodes,
   edges: edges
@@ -37,7 +36,6 @@ var options = {
 // initialize the network
 var network = new vis.Network(container, data, options);
 
-
 //function to scroll to final third of page when a node is clicked
 var scrollToThird = function () {
   var offsetValue = $('#course-area').offset().top ;
@@ -60,22 +58,39 @@ var showDescriptionAndTitle = function (courseHeader, courseDescription) {
 };
 
 //handler for clicking on pathway lists in bottom area
-var listItemShowDescription = function(e) {
+var listItemShowDescription = function (e) {
   var header = $(this).data('title');
   var description = $(this).data('description');
   showDescriptionAndTitle(header, description);
 };
 
-var hoverInListItem = function() {
-  $(this).css("font-size", "1.25em");
+var hoverInListItem = function () {
+  $(this).css('font-size', '1.25em');
 };
 
 var hoverOutListItem = function () {
-  $(this).css("font-size", "1em");
+  $(this).css('font-size', '1em');
 };
 
-var updatePathwayLists = function(pathway, currPath) {
-  $(pathway).fadeOut(function() {
+
+/**
+ * Function to get edgeIds of edges that correspond to the pathway
+ * 
+ * @argument pathwayName: the name of pathway to get objects
+ * @returns edgeObjects: => Array
+ */
+var getPathwayEdges = function (pathwayName) {
+  var edgeObjects = edges.getIds({
+    filter: function (element) {
+      return (element.type === pathwayName);
+    }
+  });
+  return edgeObjects;
+};
+
+
+var updatePathwayLists = function (pathway, currPath) {
+  $(pathway).fadeOut(function () {
     $(pathway).empty();
     //for loop indexed at 1 to prevent access of pathway's name and color object
     for (var i = 1; i < currPath.length; i++) {
@@ -107,18 +122,18 @@ network.on('selectNode', function (eventObj) {
   //clearDescription();
   pathways.forEach(function (element) {
     var currPath = pathwaysObj[element];
-    var currSection = "#pathway-" + currCol;
-    var currSectionHeader = "#pathway-header-" + currCol;
+    var currSection = '#pathway-' + currCol;
+    var currSectionHeader = '#pathway-header-' + currCol;
     var currLi = '#path-list-' + currCol;
     var currColor = currPath[0].color.color;
 
     $(currSection).css('color', currColor);
-    $(currSectionHeader).hover(function() {
-      $(this).css("font-size", "1.75em");
+    $(currSectionHeader).hover(function () {
+      $(this).css('font-size', '1.75em');
     }, 
     //hover out
-    function() {
-      $(this).css("font-size", "1.25em");
+    function () {
+      $(this).css('font-size', '1.25em');
     });
     
     fadeDivOutAndIn(currSectionHeader, currPath[0].name);
@@ -141,17 +156,8 @@ network.on('selectNode', function (eventObj) {
  * thicker and bolder)
  */
 network.on('selectEdge', function (eventObj) {
-  //get the clicked edge's object to obtain the type
   var edgeObj = edges.get(eventObj.edges[0]);
   var pathwayName = edgeObj.type;
-
-  //retrieve edgeIds of edges that have similar types
-  var edgeItems = edges.getIds({
-    filter: function (element) {
-      return (element.type === pathwayName);
-    }
-  });
-  console.log(edgeItems);
-  //highlight edges
+  var edgeItems = getPathwayEdges(pathwayName);
   network.selectEdges(edgeItems);
 });
