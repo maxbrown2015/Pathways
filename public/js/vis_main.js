@@ -47,6 +47,7 @@ var noPhysiscsOption = {
   physics: {
     enabled: false
   }
+};
 
 //function to scroll to final third of page when a node is clicked
 var scrollToThird = function () {
