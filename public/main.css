@@ -1,18 +1,27 @@
 body html {
   font-size: 100%;
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 
 @font-face {
-    font-family: simplifica;
-    src: url(img/SIMPLIFICA-Typeface.ttf);
+  font-family: simplifica;
+  src: url(img/SIMPLIFICA-Typeface.ttf);
 }
 
 @font-face {
   font-family: raleway;
   src: url(img/Raleway-Light.ttf);
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 5px;
 }
 
 .parallax {
@@ -31,9 +40,10 @@ body html {
 
 #parent-container {
   margin: 0 auto;
-  padding: 0;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 #introduction-area {
@@ -45,37 +55,54 @@ body html {
     background-position: center center;
     background-repeat: repeat;
     height: 750px;
+    margin: 0 auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-#top-buffer {
-  height: 5%;
-}
-
-.top-div-wrapper-row {
-  height: 31.66%;
-}
-
-.top-col-wrapper {
+#top-wrapper-row {
   height: 100%;
-}
-
-.top-div-row {
-  height: 50%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .pathway-button {
-  height: 50%;
   text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   font-family: simplifica;
   font-size: 1.4em;
   color: white;
-
 }
-#title-wrapper {
+
+#pathway-column-right-wrapper {
   height: 100%;
+  padding-left: 5px;
+  overflow-y: auto;
+}
+
+#pathway-column-right {
+  height: 100%;
+}
+
+#pathway-column-left-wrapper {
+  height: 100%;
+  padding-right: 5px;
+  overflow-y: auto;
+}
+
+
+#pathway-column-left {
+  height: 100%;
+}
+
+#top-descriptions-center {
+  height: 100%;
+}
+
+#title-wrapper {
+  height: 20%;
   text-align: center;
 }
 
@@ -84,106 +111,113 @@ body html {
   font-size: 6em;
   letter-spacing: .2em;
   color: white;
-  
 }
 
- #pathways-header {
-   margin-top: 100px;
- }
-
-
- #description-row {
-   margin-top: 10px;
-   margin-bottom: 20px;
-   height: 30px;
- }
-
  #pathways-subtitle {
-   font-family: simplifica;
-   font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+   font-size: 1.4em;
    color: white;
  }
 
- #page-description-wrapper {
-   text-align: center;
- }
-
- #pathway-description-wrapper {
-   text-align: center;
- }
-
- #pathway-description-text {
-  font-family: simplifica;
-  font-size: 1.2em;
-  color: white;
- }
-
- #explanation-row {
-   margin-top: 100px;
- }
-
- #explanation-text {
-   font-family: simplifica;
-   font-size: 20px;
-   color: white;
- }
-
-#tour-start-wrapper {
-  align-items: center;
-  justify-content: center;
+ #tour-start-wrapper {
+  height: 18%;
+  width: 100%;
+  margin-top: 2em;
   text-align: center;
+}
+
+#shield-start {
+  height: 5em;
+  width: 5  em;
+}
+
+
+#page-description-wrapper {
+   height: 20%;
+   display: flex;
+   text-align: justify;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(0, 0, 0, .4);
+   margin-left: 5%;
+   margin-right: 5%;
+   margin-bottom: 7.5%
+ }
+
+#explanation-text {
+ font-family: 'Open Sans', sans-serif; 
+ font-size: 1.2em;
+ color: white;
 }
 
 #tour-start {
-  border-radius: 50%;
-  color: black;
-  border: 2px solid #00144d;
-}
+  font-family: 'Open Sans', sans-serif; 
+   font-size: 1.1em;
+   color: white;
+   height: 100%;
+   width: 100%;
+ }
 
-#tour-start:active {
-  box-shadow: 0 5px #666;
-  transform: translateY(1px);
-}
+ #pathway-description-wrapper {
+   height: 7.5%;
+   text-align: center;
+ }
 
-#legend-row {
-  margin-top: 10px;
-  height: 50px;
+ #pathway-description-title {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1.3em;
+ }
 
-}
-
-#legend-row div {
-  padding: 0;
-  border: 1px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, .3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-#legend-row div p {
-  margin: -3px;
-  font-weight: bold;
-  font-size: 10px;
-}
+ #pathway-description-text {
+  font-family: 'Open Sans', sans-serif; 
+  font-size: 1.2em;
+  color: white;
+  text-align: justify;
+ }
 
 #graph-area {
   margin: 0 auto;
   height: 750px;
   width: 100%;
   background-image:     linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ), url(img/white-paper.png);
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.6)
+  ), url(img/parchment_background.jpg);
   background-position: center center;
   background-repeat: repeat;
 }
 
+
+.graph-container {
+  position: relative;
+  padding-left: 0 !important;
+  padding-right: 0 !important;  
+}
+
 #mynetwork {
+  position: absolute;
     margin: 0 auto;
-    height: 700px;
+    height: 100%;
     width: 100%;
+}
+
+#pathway-legend-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 15em;
+  width: 15em;
+}
+
+.legend {
+  height: 20%;
+  width: 100%;
+  margin-top: 13%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 #course-area {
@@ -193,16 +227,12 @@ body html {
   display: none;
   background-image:
   linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.75)
   ), url(img/books-bookshelf.jpg);
   background-position: center center;
   background-repeat: repeat;
 
-}
-
-#course-title-row {
-  margin-top: 50px;
 }
 
 #course-title {
@@ -213,11 +243,10 @@ body html {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-
 }
 
 #course-description-row {
-  font-family: raleway;
+  font-family: 'Open Sans', sans-serif;   
   margin-top: 25px;
 }
 
@@ -237,10 +266,10 @@ body html {
 }
 
 #course-pathways-row {
-  font-family: raleway;
+  font-family: 'Open Sans', sans-serif; 
   font-size: 1em;
   margin-top: 50px;
-  background-color: rgba(0, 0, 0, .4);
+  color: white;
 }
 
 .list-wrapper {
@@ -261,162 +290,10 @@ body html {
 }
 
 
-#path-list-1 {
-}
-
-#path-list-2 {
-}
-
-#path-list-3 {
-}
-
 #course-description {
   color: white;
 }
 
-
-#law-button {
-  background: linear-gradient(to right, rgb(139, 71, 137, .7), rgb(235, 209, 234, .2));
-}
-
-#law-button.active {
-  background: rgb(139, 71, 137, .7);
-}
-
-#gender-button {
-  background: linear-gradient(to right, rgb(255, 255, 102, .7), rgb(245, 245, 209, .45));
-}
-
-#gender-button.active {
-  background: #ffff66;
-}
-
-#borders-button {
-  background: linear-gradient(to left, rgb(0, 171, 255, .7), rgb(219, 243, 255, .2));
-}
-
-#borders-button.active {
-  background: #00abff
-}
-
-#intellec-button {
-  background: linear-gradient(to left, rgb(255, 165, 0, .7), rgb(241, 222, 187, .45));
-}
-
-#intellec-button.active {
-  background: #ffa500
-}
-
-#economic-button {
-  background: linear-gradient(to right, rgb(0, 255, 51, .7), rgba(207, 241, 184, 0.45));
-}
-
-#economic-button.active {
-  background: #00FF33
-}
-
-#war-button {
-  background: linear-gradient(to right, rgb(255, 192, 203, .7), rgb(255, 234, 238, .3));
-}
-
-#war-button.active {
-  background: #ffc0cb
-}
-
-#religious-button {
-  background: linear-gradient(to left,rgb(64, 224, 208, .7),rgb(207, 255, 250, .3));
-}
-
-#religious-button.active {
-  background: #40e0d0
-}
-
-#human-button {
-  background: linear-gradient(to left, rgb(165, 42, 42, .7), rgb(255, 185, 185, .2));
-}
-
-#human-button.active {
-  background: #a52a2a
-}
-
-#historical-button {
-  background: linear-gradient(to right, rgb(0, 128, 0, .7), rgb(174, 255, 174, .3));
-}
-
-#historical-button.active {
-  background: #008000;
-}
-
-#slavery-button {
-  background: linear-gradient(to right, rgb(117, 99, 196, .7), rgb(212, 202, 255, .2));
-}
-
-#slavery-button.active {
-  background: rgb(117, 99, 196)
-}
-
-#space-button {
-  background: linear-gradient(to left, rgb(199, 146, 199, .7), rgb(255, 218, 255, .3));
-}
-
-#space-button.active {
-  background: #c792c7
-}
-
-#politics-button {
-  background: linear-gradient(to left, rgb(255, 102, 102, .7), rgb(247, 183, 183, .2));
-}
-
-#politics-button.active {
-  background: #FF6666
-}
-
-#Law-Icon {
-  color: #8b4789;
-}
-#Gender-Icon {
-  color: #ffff66;
-}
-
-#Borders-Icon {
-  color: #00abff;
-}
-
-#Intellectual-Icon {
-  color: #ffa500;
-}
-
-#Economic-Icon {
-  color: #00FF33;
-}
-
-#War-Icon {
-  color:#ffc0cb;
-}
-
-#Religious-Icon {
-  color: #40e0d0;
-}
-
-#Human-Icon {
-  color: #a52a2a;
-}
-
-#Historical-Icon {
-  color: #008000;
-}
-
-#Slavery-Icon {
-  color: #7563c4;
-}
-
-#Space-Icon {
-  color: #c792c7;
-}
-
-#Politics-Icon {
-  color: #FF6666;
-}
 
 #color-word-HD {
   color: #c2004d;
