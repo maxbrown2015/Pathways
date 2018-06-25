@@ -6,7 +6,6 @@
 // container to hold the network
 var container = document.getElementById('mynetwork');
 
-// provide the data in the vis Dataset format
 var data = {
   nodes: nodes,
   edges: edges
@@ -48,6 +47,15 @@ var noPhysiscsOption = {
   physics: {
     enabled: false
   }
+
+//function to scroll to final third of page when a node is clicked
+var scrollToThird = function () {
+  var offsetValue = $('#course-area').offset().top ;
+  $('html,body').delay(500).animate({
+    scrollTop: offsetValue,
+    duration: 1000,
+    easing: 'linear'
+  });
 };
 //
 //function to scroll to final third of page when a node is clicked
@@ -57,7 +65,6 @@ var noPhysiscsOption = {
  * share the same pathways.
  */
 var isBusy = false;
-
 
 
 network.on('selectNode', function (eventObj) {
@@ -100,7 +107,6 @@ network.on('selectNode', function (eventObj) {
 });
 
 
-
 let updatePathwayCourseListings = function(pathway, currCol) {
   //console.log(pathway);
   var currPath = pathwaysObj[pathway];
@@ -136,8 +142,26 @@ let updatePathwayCourseListings = function(pathway, currCol) {
   updatePathwayLists(currLi, currPath);
 };
 
-var updatePathwayLists = function(pathway, currPath) {
-  $(pathway).fadeOut(function() {
+
+
+/**
+ * Function to get edgeIds of edges that correspond to the pathway
+ * 
+ * @argument pathwayName: the name of pathway to get objects
+ * @returns edgeObjects: => Array
+ */
+var getPathwayEdges = function (pathwayName) {
+  var edgeObjects = edges.getIds({
+    filter: function (element) {
+      return (element.type === pathwayName);
+    }
+  });
+  return edgeObjects;
+};
+
+
+var updatePathwayLists = function (pathway, currPath) {
+  $(pathway).fadeOut(function () {
     $(pathway).empty();
     //for loop indexed at 1 to prevent access of pathway's name and color object
     for (var i = 1; i < currPath.length; i++) {
@@ -166,7 +190,6 @@ var clearPathwayDivs = function(currCol) {
   $(currLegend).hide({direction: 'left', duration: 400, complete: function() {
     $(this).empty();
   }});
-
   $(currSectionHeader).fadeOut(function(){
     $(this).empty();
   });
@@ -176,7 +199,6 @@ var clearPathwayDivs = function(currCol) {
   $(currLi).fadeOut(function() {
     $(this).empty();
   });
-
 }
 
 var activatePathwayLegends = function() {
@@ -188,7 +210,6 @@ var activatePathwayLegends = function() {
  * thicker and bolder)
  */
 network.on('selectEdge', function (eventObj) {
-  //get the clicked edge's object to obtain the type
   var edgeObj = edges.get(eventObj.edges[0]);
   var pathwayName = edgeObj.type;
   //retrieve edgeIds of edges that have similar types
@@ -281,3 +302,4 @@ var hoverInHeader = function() {
 var hoverOutHeader = function() {
   $(this).css("font-size", "1.25em");
 };
+
