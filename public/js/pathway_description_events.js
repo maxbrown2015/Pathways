@@ -1,107 +1,20 @@
-var pathway_descriptions = {
-    law_society: [
-      {name: 'Law and Society',
-      color : {color: '#8b4789b3', highlight: '#ebd1ea33' },
-      description: 'Lorem Ipsum'
-    }
-    ],
-    borders_migration: [
-      {name: 'Borders, Migration and Immigration',
-       color: {color: '#00abffb3', highlight: '#dbf3ff33'},
-       description: 'Lorem Ipsum'
-      }
-    ],
-    intell_culture: [
-      { name: 'Intellectual and Cultural Life',
-        color : {color: '#ffa500b3', highlight: '#f1debb73'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    econ_history: [
-      { name: 'Economic History',
-        color: {color: '#00ff33b3', highlight: '#cff1b873'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    war_peace: [
-      { name: 'War, Peace and Diplomacy',
-        color : {color: '#ffc0cbb3', highlight: '#ffeaee4d'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    religious_comm: [
-      { name: 'Religious Communities',
-      color: {color: '#40e0d0b3', highlight: '#cffffa4d'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    human_rights: [
-      { name: 'Human Rights/Humanitarianism',
-      color: {color: '#a52a2ab3', highlight: '#ffb9b933'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    historical_methods: [
-      { name: 'Historical Methods',
-        color: {color: '#a52a2ab3', highlight: '#ffb9b933'},
-        description: 'Lorem Ipsum'
-      }
-    ],
-    gender_sexuality: [
-        { name: 'Gender and Sexuality',
-         color : {color: '#ffff66b3', highlight: '#f5f5d173' },
-         description: 'Lorem Ipsum'
-        }
-    ],
-    slavery_race: [
-        { name: 'Slavery and Race',
-         color : {color: '#7563c4b3', highlight: '#d4caff33' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-    politics_revolution: [
-        { name: 'Politics and Revolution',
-         color : {color: '#ff6666b3', highlight: '#f7b7b733' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-      spaece_place: [
-        { name: 'Space and Place',
-         color : {color: '#c792c7b3', highlight: '#ffdaff4d' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-      er_sexlity: [
-        { name: 'er and Sexuality',
-         color : {color: '#ffff66', highlight: '#ffff66' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-      der_uality: [
-        { name: 'r and Sexuality',
-         color : {color: '#ffff66', highlight: '#ffff66' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-      der_ality: [
-        { name: 'and Sexuality',
-         color : {color: '#ffff66', highlight: '#ffff66' },
-         description: 'Lorem Ipsum'
-        }
-      ],
-  };
-  
 
 var dummy_text = 
 "Laws form the foundation of every society, from Sumerian city-states to international empires. Courses in this pathway explore the historical context of legal systems, their genesis, evolutions, and impact on cultures. "
 
-
-var pathway_buttons = [];
-
 $(document).ready(function () {
     loadPathwayButtons();
-    $("#page-description-wrapper").hide();
+    firstTime = true;
+    //todo remove 
+    /*
+    setTimeout(function() {
+      $("#page-description-wrapper").toggle({effect: "drop", direction: "up", easing: 'swing', duration: 800});
+    }, 3000);
+    */
 });
+
+
+let pathway_buttons = [];
 
 var loadPathwayButtons = function() {
     //load margin and div size based on number of pathways
@@ -109,16 +22,18 @@ var loadPathwayButtons = function() {
     if (numberOfPathways % 2 == 1) numberOfPathways = numberOfPathways + 1;
 
     var height = 100.0 / numberOfPathways;
-    var margin = height * 2;
+    var margin = height * 1.5;
     //counting variable to place pathways on left or right columns
     var count = 0;
-    for (var pathway in pathway_descriptions) {
-        var currPathway = pathway_descriptions[pathway];
+    for (var pathway in pathwaysObj) {
+        var currPathway = pathwaysObj[pathway];
         //pull data from pathways object
         var name = currPathway[0].name;
-        var color = currPathway[0].color.color;
-        var highlightColor = currPathway[0].color.highlight;
-        var description = currPathway[0].description;
+        //concatenate alpha values onto color for linear gradient
+        var color = currPathway[0].color.color + "DE";
+        var highlightColor = currPathway[0].color.highlight + "8A";
+        //var description = currPathway[0].description;
+        var description = pathway_descriptions[pathway][0]['description'];
 
         //handle top margins for first two pathways, must be half the size
         if (count == 0 || count == 1) {
@@ -159,19 +74,16 @@ let createNewPathwayDiv = function(name, color, highlightColor, description, hei
       class: 'pathway-button col-sm-12',  
     });
 
-    var pathwayDescriptionText = document.getElementById("pathway-description-text");
-    var pathwayDescriptionTitle = document.getElementById("pathway-description-title");
-
     if (leftOrRight) {
         newDiv.css({"background": `linear-gradient(to right, ${color} , ${highlightColor}`, "height": `${divHeight}`, 
         "margin-top": `${marginTopHeight}`, "margin-bottom": `${marginBottomHeight}`});
         newDiv.click(function() {
-          $(pathwayDescriptionTitle).css("color", color);
+
           //CHANGE TO DESFRIPTION 
-          fadeDivOutAndIn(pathwayDescriptionTitle, name);
-          fadeDivOutAndIn(pathwayDescriptionText, dummy_text);
+          fadeDescriptionDiv(name, description, highlightColor);
           setButtonColors(id);
         });
+        sr.reveal(newDiv);
         newDiv.appendTo('#pathway-column-left');
     }
     else {
@@ -180,14 +92,15 @@ let createNewPathwayDiv = function(name, color, highlightColor, description, hei
         "margin-top": `${marginTopHeight}`, "margin-bottom": `${marginBottomHeight}`});
         newDiv.click(function() {
           //CHANGE TO DESCRIPTION
-          $(pathwayDescriptionTitle).css("color", color);
-          fadeDivOutAndIn(pathwayDescriptionTitle, name);
-          fadeDivOutAndIn(pathwayDescriptionText, dummy_text);
+         // $(pathwayDescriptionTitle).css("color", color);
+          fadeDescriptionDiv(name, description, highlightColor);
           setButtonColors(id);
         });
-
+        sr.reveal(newDiv);
         newDiv.appendTo('#pathway-column-right');
     }
+
+    pathway_buttons.push(newDiv);
 
     //mapping used to activate colors upon selection
     buttonColorMap[id] = {
@@ -212,13 +125,22 @@ let setButtonColors = function(element) {
 };
 
 $("#shield-start").click(function() {
-  $("#page-description-wrapper").toggle({easing: 'linear', duration: 800});
+  $("#page-description-wrapper").toggle({effect: "drop", direction: "up", easing: 'swing', duration: 800});
 });
 
-let fadeDivOutAndIn = function(selector, text) {
-    $(selector).fadeOut(function() {
-        $(this).html(text)
-    }).fadeIn();
+let fadeDescriptionDiv = function(title, text, color) {
+  $('#pathway-description-wrapper').hide({easing: "linear", effect: "fade", direction: 'up', duration: 400, complete: function() {
+    $('#pathway-description-title').html(title);
+    $('#pathway-description-title').css("color", color);
+    $('#pathway-description-text').html(text);
+    $(this).show({easing: 'linear', effect: "fade", direction: 'down', duration: 400, complete: function() {}});
+  }});
+}
+
+let fadeDivOutAndIn  = function(selector, text) {
+  $(selector).fadeOut(400, function() {
+      $(this).html(text);
+  }).fadeIn(400);
 }
 
 let setActiveColor = function(id, color) {

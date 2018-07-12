@@ -15,26 +15,38 @@ var options = {
   width: '100%',
   height: '100%',
   physics: {
-    enabled: true
+    enabled: true,
+    barnesHut: {
+      avoidOverlap: .5
+    }
   },
   edges: {
-    width: 0,
-    selectionWidth: 4,
+    width: 1,
+    selectionWidth: 1,
   },
   interaction: {
     zoomView: false,
     selectConnectedEdges: false,
-    dragView: false
+    dragView: false,
   },
   nodes: {
     font: {
-      color: '#FFFFFF'
+      color: '#FFFFFF',
     },
-    shape: 'dot'
+    scaling: {
+      min: 20,
+      max: 20,
+      label: {
+        min: 20,
+        max: 20,
+        enabled: true 
+      },
+    },
+    shape: 'circle',
+    value: 20
   },
   layout: {
-    randomSeed: undefined,
-    improvedLayout: true
+    randomSeed: 88145
   }
 };
 
@@ -42,71 +54,84 @@ var options = {
 // initialize the network
 var network = new vis.Network(container, data, options);
 
+window.onresize = function() {network.fit();}
+
 //set physics to false
 var noPhysiscsOption = {
   physics: {
     enabled: false
   }
 };
-
-//function to scroll to final third of page when a node is clicked
-var scrollToThird = function () {
-  var offsetValue = $('#course-area').offset().top ;
-  $('html,body').delay(500).animate({
-    scrollTop: offsetValue,
-    duration: 1000,
-    easing: 'linear'
-  });
-};
-//
-//function to scroll to final third of page when a node is clicked
-
 /**
  * If a node is clicked, populate lower half of page with list of courses that 
  * share the same pathways.
  */
-var isBusy = false;
 
+$(document).ready(function () {
+  setTimeout(function() {network.setOptions(noPhysiscsOption)}, 3000);
+});
+
+let firstTime = true;
 
 network.on('selectNode', function (eventObj) {
-
-  network.setOptions(noPhysiscsOption);
-  if (!isBusy) {
-    console.log(isBusy);
-    isBusy = true;
-  $('#course-area').css('display', 'block');
-
   var nodeObj = nodes.get(eventObj.nodes[0]);
+  if (firstTime) {
+    startTour(nodeObj);
+    firstTime = false;
+    return;
+  }
+  onNodeSelect(nodeObj);
+});
+
+let onNodeSelect = function(nodeObj) {
+  $('#course-area').css('display', 'block');
+  $('#mynetwork').css('pointer-events', 'none');
+
+  console.log(network.getSeed())
   var pathways = nodeObj.pathways;
   var numberOfPathways = Object.keys(pathways).length;
-  
+
   //clear old text
   for (var i = 0; i < 3; i++) clearPathwayDivs(i + 1);
   //adjust bootstrap divs to fit number of pathways
-  boldSelectedEdges(pathways);  
-  //make the main thread wait 400ms for fadeOut (called in clearPathwayDivs) to finish
+  boldSelectedEdges(pathways);
   setTimeout(function() {
-  //adjust bootstrap classes based on the number of pathways
-  setColumnSizes(numberOfPathways, "pathway-");
-  setColumnSizes(numberOfPathways, "graph-header-");
-
-  for (var i = 0; i < 3; i++) {
-    //console.log(pathways[i]);
-    //if pathway exists, replace the old list with the new pathway's courses
-    if (pathways[i]) {
-      //i+1 refers to the current column being set
-      updatePathwayCourseListings(pathways[i], i + 1)
+    for (var i = 0; i < 3; i++) {
+      if (pathways[i]) {updateLegends(pathways[i], i + 1);}
     }
-  };
+  }, 450);
 
-  //dispaly description and title
-  showDescriptionAndTitle(nodeObj.title, nodeObj.courseDescription);
-  //move to final third after being clicked
-  isBusy = false;
+  setTimeout(function() { 
+    let description = nodeObj.courseDescription;
+    if (nodeObj.courseDescription === 'missing course description') {
+      description = "Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English"
+    }
+    showDescriptionAndTitle(nodeObj.title, description);
+  //make the main thread wait 400ms for fadeOut (called in clearPathwayDivs) to finish
+    setTimeout(function() {
+      /*
+      $('#course-type').html("Course Type: " + "  Lecture");
+      $('#course-instructor').html("Instructor: " + "  Professor WhatsHisName");
+      */
+      //adjust bootstrap classes based on the number of pathways
+      setColumnSizes(numberOfPathways, "pathway-");
+      setColumnSizes(numberOfPathways, "graph-header-");
+
+      for (var i = 0; i < 3; i++) {
+        //console.log(pathways[i]);
+        //if pathway exists, replace the old list with the new pathway's courses
+        if (pathways[i]) {
+          //i+1 refers to the current column being set
+          updatePathwayCourseListings(pathways[i], i + 1)
+        }
+      };
+
+        //dispaly description and title
+        //move to final third after being clicked
+        $('#mynetwork').css('pointer-events', 'auto');
     }, 800);
-  }
-});
-
+  }, 200);
+};
 
 let updatePathwayCourseListings = function(pathway, currCol) {
   //console.log(pathway);
@@ -116,20 +141,7 @@ let updatePathwayCourseListings = function(pathway, currCol) {
   var currSectionHeader = "#pathway-header-" + currCol;
   var currGraphHeader = "#graph-header-" + currCol;
   var currLi = '#path-list-' + currCol;
-  var currLegend = '#pathway-legend-' + currCol;
-  var currColor = currPath[0].color.color;
-
-  $(currLegend).css("background-color", currColor);
-  //todo add easing
-  $(currLegend).show({
-    easing: 'swing',
-    direction: 'left',
-    duration: 400,
-    complete: function() {
-      $(this).html(currPath[0].name); 
-     }
-    }
-  );
+  var currColor = currPath[0].color.highlight;
 
   $(currSectionHeader).css('color', currColor);
   //$(currSection).css('opacity', .5);
@@ -143,25 +155,7 @@ let updatePathwayCourseListings = function(pathway, currCol) {
   updatePathwayLists(currLi, currPath);
 };
 
-
-
-/**
- * Function to get edgeIds of edges that correspond to the pathway
- * 
- * @argument pathwayName: the name of pathway to get objects
- * @returns edgeObjects: => Array
- */
-var getPathwayEdges = function (pathwayName) {
-  var edgeObjects = edges.getIds({
-    filter: function (element) {
-      return (element.type === pathwayName);
-    }
-  });
-  return edgeObjects;
-};
-
-
-var updatePathwayLists = function (pathway, currPath) {
+let updatePathwayLists = function (pathway, currPath) {
   $(pathway).fadeOut(function () {
     $(pathway).empty();
     //for loop indexed at 1 to prevent access of pathway's name and color object
@@ -181,83 +175,136 @@ var updatePathwayLists = function (pathway, currPath) {
   }).fadeIn();
 };
 
-var clearPathwayDivs = function(currCol) {
-  var currSectionHeader = "#pathway-header-" + currCol;
-  var currGraphHeader = "#graph-header-" + currCol;
-  var currLi = '#path-list-' + currCol;
-  var currLegend = "#pathway-legend-" + currCol;
 
-  //todo add easing
-  $(currLegend).hide({direction: 'left', duration: 400, complete: function() {
-    $(this).empty();
-  }});
-  $(currSectionHeader).fadeOut(function(){
-    $(this).empty();
-  });
-  $(currGraphHeader).fadeOut(function() {
-    $(currGraphHeader).empty();
-  });
-  $(currLi).fadeOut(function() {
-    $(this).empty();
-  });
+let updateLegends = function(pathway, currCol) {
+  var currPath = pathwaysObj[pathway];
+  var currLegend = '#pathway-legend-' + currCol;
+  var currLegendIcon = '#pathway-legend-icon-' + currCol;
+  var currColor = currPath[0].color.color;
+
+  $(currLegend).css("color", currColor);
+  $(currLegend).html(currPath[0].name); 
+  $(currLegend).show({easing: 'linear', effect: "slide", direction: 'left', duration: 400, complete: function() {}});
+
+  $(currLegendIcon).css("background-color", currColor);
+  $(currLegendIcon).show({easing: 'linear', effect: "fade", direction: 'left', duration: 400, complete: function() {}});
+  
 }
-
-var activatePathwayLegends = function() {
-
-};
-
 /**
  * If an edge is clicked, highlight all edges from a similar pathway (make them
  * thicker and bolder)
  */
 network.on('selectEdge', function (eventObj) {
   var edgeObj = edges.get(eventObj.edges[0]);
-  var pathwayName = edgeObj.type;
+  onEdgeSelect(edgeObj);
+});
+
+let onEdgeSelect = function(edgeObj) {
+  $('#mynetwork').css('pointer-events', 'none');
+  var pathwayName = pathway_descriptions[edgeObj.type]
+  network.setOptions({edges: {selectionWidth: 0}});;
+  network.unselectAll();
+
+  for (var i = 1; i < 4; i++) clearLegends(i);
+
+  setTimeout(function() {
+
+    $('#pathway-legend-1').css("color", edgeObj.color.highlight);
+    $('#pathway-legend-1').html(pathwayName[0]['name']); 
+    $('#pathway-legend-1').show({easing: 'linear', effect: "slide", direction: 'left', duration: 400, complete: function() {}});
+
+    $('#pathway-legend-icon-1').css("background-color", edgeObj.color.highlight);
+    $('#pathway-legend-icon-1').show({easing: 'linear', effect: "drop", direction: 'left', duration: 400, complete: function() {}});
+    
+  }, 500);
   //retrieve edgeIds of edges that have similar types
   var edgeItems = edges.getIds({
     filter: function (element) {
-      return (element.type === pathwayName);
+      return (element.type === edgeObj.type);
     }
   });
   //highlight edges
-  network.selectEdges(edgeItems);
-});
+  fadeInEdges(edgeItems);
+  setTimeout(function() {
+    $('#mynetwork').css('pointer-events', 'auto');
+  }, 800);
+}
 
 let boldSelectedEdges = function(pathways) {
   //retrieve edgeIds of edges that have similar types
-  
+  network.setOptions({edges: {selectionWidth: 0}});;
+  network.unselectAll();
+
   var edgeItems = edges.getIds({
     filter: function (element) {
       //TODO ASK SHAD ABOUT BUG POSSIBILITY
       return (element.type === pathways[0] || element.type === pathways[1] || element.type === pathways[2]);
     }
   });
+  //console.log(edgeItems);
+  fadeInEdges(edgeItems);
+};
 
+
+//boolean to disable scrolling after first click
+
+//handler to show the course description when a user clicks on a node
+let showDescriptionAndTitle = function (courseHeader, courseDescription) {
+  var header = courseHeader.split(':');
+  var innerText = header[0] + ':<br>' + header[1] + '</br>';
+  //console.log(courseDescription);
+  fadeDivOutAndIn('#course-title', innerText.toUpperCase());
+  fadeDivOutAndIn('#course-description-body', courseDescription);
+};
+
+let listItemShowDescription = function(e) {
+  var header = $(this).data('title');
+  var description = $(this).data('description');
+  showDescriptionAndTitle(header, description);
+};
+
+
+let highlightEdge = function(singletonEdge) {
+  network.setSelection(
+  {
+    edges: singletonEdge
+  },
+  {
+    unselectAll: false,
+    highlightEdges: true
+  }
+  );
+}
+
+/**
+ * Function to get edgeIds of edges that correspond to the pathway
+ * 
+ * @argument pathwayName: the name of pathway to get objects
+ * @returns edgeObjects: => Array
+ */
+let getPathwayEdges = function (pathwayName) {
+  var edgeObjects = edges.getIds({
+    filter: function (element) {
+      return (element.type === pathwayName);
+    }
+  });
+  return edgeObjects;
+};
+
+let fadeInEdges = function(edgeItems) {
   network.selectEdges(edgeItems);
+  for (var i = 0; i < 6; i += .075  ) { 
+    (function(i) {
+      setTimeout(function() {
+        network.setOptions({
+          edges: {selectionWidth: i}
+        });
+      }, 10 * i);
+    })(i) 
+  };
 };
 
-
-let setColumnSizes = function(numberOfPathways, idString) {
-
-  let path1 = document.getElementById(idString + "1");
-  let path2 = document.getElementById(idString + "2");
-  let path3 = document.getElementById(idString + "3");
-  $(path1).removeClass();
-  $(path2).removeClass();
-  $(path3).removeClass();
-    if (numberOfPathways === 1) {
-      $(path1).addClass("col-md-12");
-    }
-    else if (numberOfPathways === 2) {
-      $(path1).addClass("col-md-6");
-      $(path2).addClass("col-md-6");
-    }
-    else {
-      $(path1).addClass("col-md-4");
-      $(path2).addClass("col-md-4");
-      $(path3).addClass("col-md-4");
-    }
-};
+//function to scroll to final third of page when a node is clicked
 
 var scrollToThird = function () {
   var offsetValue = $('#course-area').offset().top ;
@@ -268,39 +315,87 @@ var scrollToThird = function () {
   });
 };
 
-//boolean to disable scrolling after first click
-var firstTime = true;
+network.on('dragEnd', function() {
+  network.unselectAll();
+}); 
 
-//handler to show the course description when a user clicks on a node
-var showDescriptionAndTitle = function (courseHeader, courseDescription) {
-  var header = courseHeader.split(':');
-  var innerText = header[0] + ':<br>' + header[1] + '</br>';
-  fadeDivOutAndIn('#course-title', innerText);
-  fadeDivOutAndIn('#course-description-body', courseDescription);
-};
+//
+//function to scroll to final third of page when a node is clicked
 
-//handler for clicking on pathway lists in bottom area
-var listItemShowDescription = function(e) {
-  var header = $(this).data('title');
-  var description = $(this).data('description');
-  showDescriptionAndTitle(header, description);
-};
 
-var hoverInListItem = function() {
-  //console.log("inlist called");
-  $(this).css("font-size", "1.25em");
-};
+/********** */
 
-var hoverOutListItem = function () {
-  //console.log("inlist hover out called");
-  $(this).css("font-size", "1em");
+var pathway_descriptions = {
+  law_society: [
+    {name: 'Law and Society',
+    color : {color: '#abc9a5b3', highlight: '#dcf0d833' },
+    description: 'Laws form the foundation of every society, from Sumerian city-states to international empires. Courses in this pathway explore the historical context of legal systems, their genesis, evolutions, and impact on cultures.'
+  }
+  ],
+  borders_migration: [
+    {name: 'Borders, Migration and Immigration',
+     color: {color: '#7fb4a6b3', highlight: '#cdf0e733'},
+     description: 'What defines a border? From nomadic steppe tribes to Syrian refugees, humans have always been on the move, crossing real and imagined boundaries. These courses delve into the cultural and political impacts of migration, such as the diffusion of culture and ideas, changing demographics, and violence. '
+    }
+  ],
+  intell_culture: [
+    { name: 'Intellectual and Cultural Life',
+      color : {color: '#ffbebeb3', highlight: '#ffe1e133'},
+      description: 'Courses in this pathway investigates the history of human thought, culture, and expression— in short, the things that have allowed human beings, alone among the species, to mediate their relationship to the natural world with their minds and their media of communication'
+    }
+  ],
+  econ_history: [
+    { name: 'Economic History',
+      color: {color: '#ffeaeab3', highlight: '#cff1b873'},
+      description: 'Economic historians seek to try and understand historical events by appealing to our knowledge of economic processes. This pathway’s courses examine the writings of classical economists, the effects of both free and protected trade, and the societal consequences of different economic systems.'
+    }
+  ],
+  war_peace: [
+    { name: 'War, Peace and Diplomacy',
+      color : {color: '#fff5d5b3', highlight: '#fdfaf033'},
+      description: 'Whether it be religion, resources, or personal disputes, societies have always found reasons to fight. Courses in this pathway explore the complex relationships between polities, as well as the delicate balance between war and peace which has determined the course of much of human history.'
+    }
+  ],
+  religious_comm: [
+    { name: 'Religious Communities',
+    color: {color: '#eddbffb3', highlight: '#f3e7ff33'},
+      description: 'For much of history, religion has formed the cultural, moral, and legal foundation of many societies. This pathway analyzes the growth of these communities, how their cultures reflected their respective doctrines, and how they existed beside and within one another.'
+    }
+  ],
+  human_rights: [
+    { name: 'Human Rights/Humanitarianism',
+    color: {color: '#3b4a39b3', highlight: '#6e856b33'},
+      description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks'
+    }
+  ],
+  historical_methods: [
+    { name: 'Historical Methods',
+      color: {color: '#3f417fb3', highlight: '#9193db33'},
+      description: 'How reliable are historical sources? How can you identify biases? Which ones contain the most ‘truth’. These questions, the essence of historiography, are central to a critical understanding of the past.'
+    }
+  ],
+  gender_sexuality: [
+      { name: 'Gender and Sexuality',
+       color : {color: '#e77878b3', highlight: '#f9cfcf33' },
+       description: 'This pathway\’s courses explore how gender varied over time and cross-culturally as a key component of politics, economics, social relations, and culture, as well as investigating the shifting perceptions of sex and sexuality in societies around the globe.'
+      }
+  ],
+  slavery_race: [
+      { name: 'Slavery and Race',
+       color : {color: '#61c0bfb3', highlight: '#b1f2f133' },
+       description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks'
+      }
+    ],
+  politics_rev: [
+      { name: 'Politics and Revolution',
+       color : {color: '#e7eaeeb3', highlight: '#ecf0f633' },
+       description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks'
+      }
+    ],
+    space_place: [
+      { name: 'Space and Place',
+       color : {color: '#ff9464b3', highlight: '#ffc7ad33' },
+       description: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks'
+      }
+    ]
 };
-
-var hoverInHeader = function() {
-  $(this).css("font-size", "1.5em");
-};
-//hover out
-var hoverOutHeader = function() {
-  $(this).css("font-size", "1.25em");
-};
-
