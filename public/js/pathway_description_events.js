@@ -111,58 +111,45 @@ const dummy_text = 'Laws form the foundation of every society, from Sumerian cit
 
 
 const pathway_buttons = [];
+const buttonColorMap = {};
 
-let loadPathwayButtons = () => {
-  // load margin and div size based on number of pathways
-  let numberOfPathways = Object.keys(pathway_descriptions).length;
-  if (numberOfPathways % 2 == 1) numberOfPathways += 1;
+const setActiveColor = function setActiveColor(id, color) {
+  const selector = document.getElementById(id);
+  $(selector).css('background', color);
+};
 
-  const height = 100.0 / numberOfPathways;
-  const margin = height * 2;
-  // counting variable to place pathways on left or right columns
-  let count = 0;
-  for (const pathway in pathway_descriptions) {
-    const currPathway = pathway_descriptions[pathway];
-    // pull data from pathways object
-    const name = currPathway[0].name;
-    const color = currPathway[0].color.color;
-    const highlightColor = currPathway[0].color.highlight;
-    const description = currPathway[0].description;
-
-    // handle top margins for first two pathways, must be half the size
-    if (count == 0 || count == 1) {
-      createNewPathwayDiv(name, color, highlightColor, description, height, margin / 2.0, margin, count % 2 == 0);
-    }
-    // handle bottom margins for bottom two pathways
-    else if (count == numberOfPathways - 2 || count == numberOfPathways - 1) {
-      // if number of pathways is odd, handle the left side's bottom margin and treat the right div normal
-      if (numberOfPathways % 2 == 1 && count === numberOfPathways - 2) {
-        createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 == 0);
-      }
-      // else adjust both divs
-      else {
-        createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin / 2, count % 2 == 0);
-      }
-    } else {
-      createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 == 0);
-    }
-    count++;
+const setRestingColor = function setRestingColor(id, color, highlight, leftOrRight) {
+  const selector = document.getElementById(id);
+  if (leftOrRight) {
+    $(selector).css('background', `linear-gradient(to right, ${color} , ${highlight}`);
+  } else {
+    $(selector).css('background', `linear-gradient(to left, ${color} , ${highlight}`);
   }
 };
 
-$(document).ready(() => {
-  loadPathwayButtons();
-  $('#page-description-wrapper').hide();
-});
+const fadeDivOutAndIn = function fadeDivOutAndIn(selector, text) {
+  $(selector).fadeOut(function fadeOut() {
+    $(this).html(text);
+  }).fadeIn();
+};
 
+const setButtonColors = function setButtonColors(element) {
+  for (const key in buttonColorMap) {
+    const color = buttonColorMap[key].color;
+    const highlight = buttonColorMap[key].highlight;
+    const leftOrRight = buttonColorMap[key].leftOrRight;
+    if (key === element) {
+      setActiveColor(key, color);
+    } else {
+      setRestingColor(key, color, highlight, leftOrRight);
+    }
+  }
+};
 
-
-const buttonColorMap = {};
-
-let createNewPathwayDiv = (name, color, highlightColor, description, height, marginTop,
-  marginBottom, leftOrRight) => {
+const createNewPathwayDiv = function createNewPathwayDiv(name, color,
+  highlightColor, description, height, marginTop, marginBottom, leftOrRight) {
   const divHeight = `${String(height)}%`;
-  const marginTopHeight = `${String(marginTop) }%`;
+  const marginTopHeight = `${String(marginTop)}%`;
   const marginBottomHeight = `${String(marginBottom)}%`;
 
   const nameArray = name.split(' ');
@@ -218,36 +205,53 @@ let createNewPathwayDiv = (name, color, highlightColor, description, height, mar
   };
 };
 
-let setButtonColors = (element) => {
-  for (const key in buttonColorMap) {
-    const color = buttonColorMap[key].color;
-    const highlight = buttonColorMap[key].highlight;
-    const leftOrRight = buttonColorMap[key].leftOrRight;
-    if (key === element) {
-      setActiveColor(key, color);
-    } else {
-      setRestingColor(key, color, highlight, leftOrRight);
+
+const loadPathwayButtons = function loadPathwayButtons() {
+  // load margin and div size based on number of pathways
+  let numberOfPathways = Object.keys(pathway_descriptions).length;
+  if (numberOfPathways % 2 === 1) {
+    numberOfPathways += 1;
+  }
+
+  const height = 100.0 / numberOfPathways;
+  const margin = height * 2;
+  // counting variable to place pathways on left or right columns
+  let count = 0;
+  for (const pathway in pathway_descriptions) {
+    const currPathway = pathway_descriptions[pathway];
+    // pull data from pathways object
+    const name = currPathway[0].name;
+    const color = currPathway[0].color.color;
+    const highlightColor = currPathway[0].color.highlight;
+    const description = currPathway[0].description;
+
+    // handle top margins for first two pathways, must be half the size
+    if (count === 0 || count === 1) {
+      createNewPathwayDiv(name, color, highlightColor, description, height, margin / 2.0, margin, count % 2 === 0);
     }
+    // handle bottom margins for bottom two pathways
+    else if (count === numberOfPathways - 2 || count === numberOfPathways - 1) {
+      // if number of pathways is odd, handle the left side's bottom margin and treat the right div normal
+      if (numberOfPathways % 2 === 1 && count === numberOfPathways - 2) {
+        createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 === 0);
+      }
+      // else adjust both divs
+      else {
+        createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin / 2, count % 2 === 0);
+      }
+    } else {
+      createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 === 0);
+    }
+    count += 1;
   }
 };
+
 
 $('#shield-start').click(() => {
   $('#page-description-wrapper').toggle({ easing: 'linear', duration: 800 });
 });
 
-let fadeDivOutAndIn = function (selector, text) {
-  $(selector).fadeOut(function () {
-    $(this).html(text);
-  }).fadeIn();
-};
-
-let setActiveColor = (id, color) => {
-  const selector = document.getElementById(id);
-  $(selector).css('background', color);
-};
-
-let setRestingColor = (id, color, highlight, leftOrRight) => {
-  const selector = document.getElementById(id);
-  if (leftOrRight) $(selector).css('background', `linear-gradient(to right, ${color} , ${highlight}`);
-  else $(selector).css('background', `linear-gradient(to left, ${color} , ${highlight}`);
-};
+$(document).ready(() => {
+  loadPathwayButtons();
+  $('#page-description-wrapper').hide();
+});
