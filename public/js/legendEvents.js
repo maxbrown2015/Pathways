@@ -18,7 +18,7 @@ $('#legend-row').click((e) => {
 
     clearDescription();
 
-    $('#pathway1').html(`<h4>${wantedNodes[0].name }</h4>`);
+    $('#pathway1').html(`<h4>${wantedNodes[0].name}</h4>`);
 
     for (let i = 1; i < wantedNodes.length; i++) {
       const currentNode = wantedNodes[i];

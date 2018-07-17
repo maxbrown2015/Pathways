@@ -112,12 +112,7 @@ const dummy_text = 'Laws form the foundation of every society, from Sumerian cit
 
 const pathway_buttons = [];
 
-$(document).ready(() => {
-  loadPathwayButtons();
-  $('#page-description-wrapper').hide();
-});
-
-var loadPathwayButtons = function () {
+let loadPathwayButtons = () => {
   // load margin and div size based on number of pathways
   let numberOfPathways = Object.keys(pathway_descriptions).length;
   if (numberOfPathways % 2 == 1) numberOfPathways += 1;
@@ -155,10 +150,17 @@ var loadPathwayButtons = function () {
   }
 };
 
+$(document).ready(() => {
+  loadPathwayButtons();
+  $('#page-description-wrapper').hide();
+});
+
+
+
 const buttonColorMap = {};
 
-let createNewPathwayDiv = function (name, color, highlightColor, description, height, marginTop,
-  marginBottom, leftOrRight) {
+let createNewPathwayDiv = (name, color, highlightColor, description, height, marginTop,
+  marginBottom, leftOrRight) => {
   const divHeight = `${String(height)}%`;
   const marginTopHeight = `${String(marginTop) }%`;
   const marginBottomHeight = `${String(marginBottom)}%`;
@@ -216,7 +218,7 @@ let createNewPathwayDiv = function (name, color, highlightColor, description, he
   };
 };
 
-let setButtonColors = function (element) {
+let setButtonColors = (element) => {
   for (const key in buttonColorMap) {
     const color = buttonColorMap[key].color;
     const highlight = buttonColorMap[key].highlight;
@@ -239,12 +241,12 @@ let fadeDivOutAndIn = function (selector, text) {
   }).fadeIn();
 };
 
-let setActiveColor = function (id, color) {
+let setActiveColor = (id, color) => {
   const selector = document.getElementById(id);
   $(selector).css('background', color);
 };
 
-let setRestingColor = function (id, color, highlight, leftOrRight) {
+let setRestingColor = (id, color, highlight, leftOrRight) => {
   const selector = document.getElementById(id);
   if (leftOrRight) $(selector).css('background', `linear-gradient(to right, ${color} , ${highlight}`);
   else $(selector).css('background', `linear-gradient(to left, ${color} , ${highlight}`);

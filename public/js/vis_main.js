@@ -194,7 +194,7 @@ var clearPathwayDivs = function (currCol) {
 duration: 400,
 complete() {
     $(this).empty();
-  } 
+  }
 });
   $(currSectionHeader).fadeOut(function () {
     $(this).empty();
@@ -262,7 +262,7 @@ let setColumnSizes = function (numberOfPathways, idString) {
 };
 /**
  * potential source of error!!
- * TODO refer to code block aove
+ * TODO refer to code block above
  */
 var scrollToThird = function () {
   let offsetValue = $('#course-area').offset().top;
