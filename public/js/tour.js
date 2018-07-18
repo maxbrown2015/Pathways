@@ -1,7 +1,24 @@
 /**
  * This file holds the logic for the tour/walkthrough of the page
  */
+<<<<<<< HEAD
 
+=======
+let tour = new Tour({
+  steps: [
+    {
+      element: '#tour-start',
+      title: 'Welcome to Pathways!',
+      content: '',
+    },
+  ] 
+});
+tour.init();
+
+$().click(() => {
+  tour.restart();
+});
+>>>>>>> master
 
 let startTour = function(node) {
   var tour = new Tour({
@@ -41,4 +58,4 @@ let startTour = function(node) {
     tour.restart();
 }
 
-/****Showing Description On Shield Click****/
+/****Showing Description On Shield Click*** */
