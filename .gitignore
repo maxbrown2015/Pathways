@@ -1,5 +1,6 @@
+.DS_Store
 node_modules
 settings.json
 visDemo/
 drupalUpload.json
-*.DS_Store
+
