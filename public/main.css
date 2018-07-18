@@ -2,8 +2,9 @@ body html {
   font-size: 100%;
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  overflow-x: hidden; 
+  padding: 0 !important;
 }
 
 @font-face {
@@ -17,10 +18,13 @@ body html {
 }
 
 ul {
+  position: relative;
   list-style-type: none;
 }
 
 li {
+  position: relative;
+  display: flex;
   margin: 5px;
 }
 
@@ -34,8 +38,10 @@ li {
   background-image: url(img/vintage-concrete.png);
   background-position: center center;
   background-repeat: repeat;
+  background-size: cover;
   height: 100%;
   width: 100%;
+  margin: 0 auto;
 }
 
 #parent-container {
@@ -46,19 +52,23 @@ li {
   padding-right: 0 !important;
 }
 
+/**********/
+
 #introduction-area {
     background-image:
     linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), url(img/european-city.jpg);
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ), url(img/college-hall-green.jpg);
     background-position: center center;
     background-repeat: repeat;
-    height: 750px;
+    height: 850px;
+    width: 100%;
     margin: 0 auto;
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
 
 #top-wrapper-row {
   height: 100%;
@@ -66,82 +76,55 @@ li {
   margin: 0 auto;
 }
 
-.pathway-button {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: simplifica;
-  font-size: 1.4em;
-  color: white;
-}
-
-#pathway-column-right-wrapper {
-  height: 100%;
-  padding-left: 5px;
-  overflow-y: auto;
-}
-
-#pathway-column-right {
-  height: 100%;
-}
-
-#pathway-column-left-wrapper {
-  height: 100%;
-  padding-right: 5px;
-  overflow-y: auto;
-}
-
-
-#pathway-column-left {
-  height: 100%;
-}
-
 #top-descriptions-center {
   height: 100%;
 }
 
 #title-wrapper {
+  margin-top: 5%;  
   height: 20%;
   text-align: center;
+  margin-bottom: 5%;
 }
 
 #pathways-title {
   font-family: simplifica;
-  font-size: 6em;
+  font-size: 10em;
   letter-spacing: .2em;
   color: white;
 }
 
  #pathways-subtitle {
   font-family: 'Open Sans', sans-serif;
-   font-size: 1.4em;
+   font-size: 2em;
    color: white;
  }
 
  #tour-start-wrapper {
-  height: 18%;
+  height: 20%;
   width: 100%;
   margin-top: 2em;
   text-align: center;
 }
 
 #shield-start {
-  height: 5em;
-  width: 5  em;
+  height: 5.7em;
+  width: 5em;
 }
-
 
 #page-description-wrapper {
    height: 20%;
-   display: flex;
-   text-align: justify;
-   justify-content: center;
-   align-items: center;
+   display: none;
    background-color: rgba(0, 0, 0, .4);
    margin-left: 5%;
    margin-right: 5%;
    margin-bottom: 7.5%
+ }
+
+ #explanation-wrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
  }
 
 #explanation-text {
@@ -158,35 +141,118 @@ li {
    width: 100%;
  }
 
- #pathway-description-wrapper {
-   height: 7.5%;
-   text-align: center;
+ /**********/
+
+ #pathway-area {
+  height: 850px;
+  width: 100%;
+  background-image:
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url(img/adventure-ancient.jpg);
  }
 
- #pathway-description-title {
-  font-family: 'Open Sans', sans-serif; 
-  font-size: 1.3em;
- }
+ #pathway-column-right-wrapper {
+  height: 100%;
+  padding-left: 5px;
+  overflow-y: auto;
+}
 
- #pathway-description-text {
-  font-family: 'Open Sans', sans-serif; 
+#pathway-column-right {
+  height: 100%;
+}
+
+#pathway-column-left-wrapper {
+  height: 100%;
+  padding-right: 5px;
+  overflow-y: auto;
+}
+
+#pathway-column-left {
+  height: 100%;
+}
+
+#pathway-middle-wrapper {
+  height: 100%;
+}
+
+#pathway-area-title-wrapper {
+  margin-top: 5%;
+  height: 10%
+}
+
+#pathway-explanation-wrapper {
+  margin-top: 5%;
+  height: 30%;
+}
+
+#pathway-explanation {
+  font-size: 1.4em;
+  font-family: "Open Sans", "sans-serif";
+  color: white;
+  justify-content: center;
+  text-align: justify;
+    /*background-color: rgba(0, 0, 0, .4);*/
+}
+
+#pathway-area-title {
+  font-family: simplifica;
+  font-size: 5em;
+  color: white;
+  text-align: center;
+}
+#pathway-description-wrapper {
+  margin: 5%;
+  height: 25%;
+  min-height: 5em;
+  display: none;
+  background-color: rgba(0, 0, 0, .2 );
+}
+
+#pathway-description {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
+
+}
+
+#pathway-description-title {
+ font-family: 'Open Sans', sans-serif; 
+ font-size: 1.7em;
+ text-align: center;
+}
+
+#pathway-description-text {
+ font-family: 'Open Sans', sans-serif; 
+ font-size: 1.2em;
+ color: white;
+}
+
+.pathway-button {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
   color: white;
-  text-align: justify;
- }
+}
+
+
+ /**********/
 
 #graph-area {
   margin: 0 auto;
-  height: 750px;
+  height: 800px;
   width: 100%;
   background-image:     linear-gradient(
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.6)
-  ), url(img/parchment_background.jpg);
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.3)
+  ), url(img/grungy-dark-background.jpg);
   background-position: center center;
   background-repeat: repeat;
 }
-
 
 .graph-container {
   position: relative;
@@ -194,11 +260,74 @@ li {
   padding-right: 0 !important;  
 }
 
-#mynetwork {
+#network-header-wrapper {
+  height: 15%;
+  display: flex;
+}
+
+#network-header {
+  margin-left: 1em; 
+  font-family: simplifica;
+  font-size: 4em;
+  color: white;
+  margin-bottom: .5em;
+}
+
+#help-icon-container {
+  position: absolute !important;
+  right: 0;
+  top: 0;
+  height: 10em;
+  width: 10em;
+  margin-right: .5em;
+}
+
+#help-button {
+  font-size: 7.5em;
+  float: right;
+  color: #b0abab;
+}
+
+#help-button:hover {
+  color: white;
+}
+
+#tour-invisible-start {
   position: absolute;
-    margin: 0 auto;
-    height: 100%;
-    width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 40%;
+  right: 60%;
+  top: 50%;
+  bottom: 50%;
+}
+
+#tour-invisible-node {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 70%;
+  right: 30%;
+  top: 30%;
+  bottom: 70%;
+}
+
+#tour-invisible-description {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 40%;
+  right: 60%;
+  top: 50%;
+  bottom: 50%;
+}
+
+
+#mynetwork {
+  position: relative;
+  margin: 0 auto;
+  height: 100%;
+  width: 90%;
 }
 
 #pathway-legend-container {
@@ -206,39 +335,81 @@ li {
   left: 0;
   top: 0;
   height: 15em;
-  width: 15em;
+  width: 30em;
 }
+
+.legend-wrapper {
+  height: 20%;
+  position: relative;
+  margin-bottom: 2em;
+
+}
+
+.legend-icon {
+  float: left;
+  height: 2em;
+  width: 2em;
+  display: none;
+  border-radius: 50%;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 
 .legend {
-  height: 20%;
-  width: 100%;
-  margin-top: 13%;
-  text-align: center;
+  height: 100%;
+  width: 18em;
+  margin-left: 2em;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
+  justify-content: left;
+  align-content: center;
+  font-family: 'Open Sans', sans-serif;   
+  font-size: 1.2em;
 }
+
+.legend:hover {
+  font-size: 1.4;
+}
+
+/**********/
+
 
 #course-area {
+  position: relative;
   width: 100%;
-  min-height: 700px;
-  max-height: 2000px;
-  display: none;
+  margin: 0 auto;
+  min-height: 850px;
+  max-height: 2000px; 
   background-image:
   linear-gradient(
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0.75)
-  ), url(img/books-bookshelf.jpg);
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)
+  ), url(img/trade-routes-1.jpg);
   background-position: center center;
   background-repeat: repeat;
-
 }
 
+#course-information-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 15em;
+  width: 30em;
+  margin-left: 1em; 
+  font-family: simplifica;
+  font-size: 4em;
+  color: white;
+  margin-bottom: .5em;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+
+}
 #course-title {
   font-family: simplifica;
   font-size: 3em;
-  letter-spacing: 0.04em;
+  margin-top: 2em;
+  letter-spacing: 0.07em;
   color: white;
   margin-left: auto;
   margin-right: auto;
@@ -263,6 +434,22 @@ li {
   margin-right: auto;
   margin-left: auto;
   text-align: justify;
+}
+
+#course-details-row {
+  font-family: 'Open Sans', sans-serif; 
+}
+
+#course-type {
+  font-size: 1.125em;
+  color: white;
+  text-align: center;
+}
+
+#course-instructor {
+  font-size: 1.125em;
+  color: white;
+  text-align: center;
 }
 
 #course-pathways-row {
