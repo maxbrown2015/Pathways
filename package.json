@@ -7,17 +7,9 @@
         "url": "https://github.com/maxbrown2015/Pathways"
     },
     "scripts": {
-<<<<<<< HEAD
-        "dev": "lite-server"
-    },
-    "dependencies": {
-        "eslint": "^4.19.1",
-        "eslint-plugin-import": "2.13.0"
-=======
         "dev": "lite-server",
         "precommit": "eslint public",
         "prepush": "eslint public"
->>>>>>> master
     },
     "dependencies": {},
     "devDependencies": {

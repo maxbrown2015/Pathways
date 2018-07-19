@@ -4,6 +4,7 @@
  * and edges that correspond to the selected pathway
  */
 
+/*
 $('#legend-row').click((e) => {
   // variables to get data from the text or the div once clicked
   const $actualDiv = $(e.target).attr('data-pathway');
@@ -43,3 +44,4 @@ $('#legend-row').click((e) => {
   // TODO see when this change first occured
   network.selectNodes(nodeIDs);
 });
+*/
