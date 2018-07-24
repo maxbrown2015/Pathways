@@ -11,16 +11,19 @@ const data = {
   edges,
 };
 
+const width = 800;
+const height = 800;
 const options = {
   width: '100%',
   height: '100%',
   physics: {
     enabled: true,
     barnesHut: {
-      avoidOverlap: 0.5,
+      avoidOverlap: 0.3,
     },
   },
   edges: {
+
     width: 1,
     selectionWidth: 1,
   },
@@ -32,27 +35,58 @@ const options = {
   nodes: {
     font: {
       color: '#FFFFFF',
+      size: 25,
     },
+    size: 25,
     scaling: {
-      min: 20,
-      max: 20,
+      min: 25,
+      max: 25,
       label: {
-        min: 20,
-        max: 20,
+        min: 10,
+        max: 15,
         enabled: true,
       },
     },
     shape: 'circle',
-    value: 20,
+    value: 15,
+  },
+  configure: {
+    enabled: false,
+    filter: true,
   },
   layout: {
-    randomSeed: 88145,
+    randomSeed: 211039,
   },
 };
 
+/*
+const setXandY = function setXandY() {
+  let x = 80;
+  let y = 0;
+  nodes.forEach((node, id) => {
+    nodes.update({ id: id, x: x, y: y});
+    console.log(node);
+    x += 80;
+    if (x > 800) {
+      x = 0;
+      y += 80;
+    }
+  });
+};
+
+setXandY();
+*/
+const network = new vis.Network(container, data, options);
+
+/*
+network.moveTo({
+  position: {x: 0, y: 0},
+  offset: {x: -width/2, y: -height/2},
+  scale: 1,
+})
+*/
 
 // initialize the network
-const network = new vis.Network(container, data, options);
 
 window.onresize = () => { network.fit(); };
 
@@ -63,10 +97,8 @@ const noPhysiscsOption = {
   },
 };
 
-// function to scroll to final third of page when a node is clicked
-/**
- * POTENTIAL SOURCE OF ERROR DOUBLE FUNCTIONS LINE 264!!
- */
+
+// function to scroll to final third of page when a node is clicke
 
 // handler to show the course description when a user clicks on a node
 
@@ -76,26 +108,10 @@ const noPhysiscsOption = {
  */
 
 $(document).ready(() => {
+  console.log(network.getSeed());
   setTimeout(() => { network.setOptions(noPhysiscsOption); }, 3000);
 });
 
-const updateLegends = function updateLegends(pathway, currCol) {
-  const currPath = pathwaysObj[pathway];
-  const currLegend = `#pathway-legend-${currCol}`;
-  const currLegendIcon = `#pathway-legend-icon-${currCol}`;
-  const currColor = currPath[0].color.color;
-
-  $(currLegend).css('color', currColor);
-  $(currLegend).html(currPath[0].name);
-  $(currLegend).show({
-    easing: 'linear', effect: 'slide', direction: 'left', duration: 400, complete() {},
-  });
-
-  $(currLegendIcon).css('background-color', currColor);
-  $(currLegendIcon).show({
-    easing: 'linear', effect: 'fade', direction: 'left', duration: 400, complete() {},
-  });
-};
 /**
  * If an edge is clicked, highlight all edges from a similar pathway (make them
  * thicker and bolder)

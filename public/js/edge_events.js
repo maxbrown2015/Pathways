@@ -22,19 +22,13 @@ const onEdgeSelect = function onEdgeSelect(edgeObj) {
   network.unselectAll();
 
   for (let i = 1; i < 4; i += 1) clearLegends(i);
+  setIconSizes();
 
   setTimeout(() => {
-    $('#pathway-legend-1').css('color', edgeObj.color.highlight);
-    $('#pathway-legend-1').html(pathwayName[0].name);
-    $('#pathway-legend-1').show({
-      easing: 'linear', effect: 'slide', direction: 'left', duration: 400, complete() {},
-    });
-
-    $('#pathway-legend-icon-1').css('background-color', edgeObj.color.highlight);
-    $('#pathway-legend-icon-1').show({
-      easing: 'linear', effect: 'drop', direction: 'left', duration: 400, complete() {},
-    });
+    updateLegends(edgeObj.type, 1);
   }, 500);
+
+
   // retrieve edgeIds of edges that have similar types
   const edgeItems = edges.getIds({
     filter(element) {
@@ -63,6 +57,15 @@ const boldSelectedEdges = function boldSelectedEdges(pathways) {
 };
 
 network.on('selectEdge', (eventObj) => {
+  console.log('select');
   const edgeObj = edges.get(eventObj.edges[0]);
   onEdgeSelect(edgeObj);
+});
+
+network.on('click', (eventObj) => {
+  console.log('ccik');
+  const edgeObj = edges.get(eventObj.edges);
+  if (edgeObj.length === 1) {
+    onEdgeSelect(edgeObj[0]);
+  }
 });

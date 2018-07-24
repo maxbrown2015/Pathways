@@ -54,13 +54,15 @@ const onNodeSelect = function onNodeSelect(nodeObj) {
 
   // clear old text
   for (let i = 0; i < 3; i += 1) clearPathwayDivs(i + 1);
+
   // adjust bootstrap divs to fit number of pathways
   boldSelectedEdges(pathways);
+  setIconSizes();
   setTimeout(() => {
     for (let i = 0; i < 3; i += 1) {
       if (pathways[i]) { updateLegends(pathways[i], i + 1); }
     }
-  }, 450);
+  }, 500);
 
   setTimeout(() => {
     let description = nodeObj.courseDescription;
@@ -77,7 +79,7 @@ const onNodeSelect = function onNodeSelect(nodeObj) {
       // adjust bootstrap classes based on the number of pathways
       setColumnSizes(numberOfPathways, 'pathway-');
       setColumnSizes(numberOfPathways, 'graph-header-');
-
+      
       for (let i = 0; i < 3; i += 1) {
         // console.log(pathways[i]);
         // if pathway exists, replace the old list with the new pathway's courses
@@ -94,12 +96,15 @@ const onNodeSelect = function onNodeSelect(nodeObj) {
 
 network.on('selectNode', (eventObj) => {
   const nodeObj = nodes.get(eventObj.nodes[0]);
-  console.log(eventObj);
+  console.log(network.getSeed());
+  console.log(nodeObj.x);
+  /*
   if (firstTime) {
     startTour(nodeObj);
     firstTime = false;
     return;
   }
+  */
   onNodeSelect(nodeObj);
 });
 

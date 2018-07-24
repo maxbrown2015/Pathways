@@ -54,11 +54,20 @@ const fadeDivOutAndIn = function (selector, text) {
   }).fadeIn(400);
 };
 
-const createNewPathwayDiv = function createNewPathwayDiv(name, color, highlightColor, description, height, marginTop,
+const createNewPathwayDiv = function createNewPathwayDiv(pathway, height, marginTop,
   marginBottom, leftOrRight) {
   const divHeight = `${String(height)}%`;
   const marginTopHeight = `${String(marginTop)}%`;
   const marginBottomHeight = `${String(marginBottom)}%`;
+
+  const currPathway = pathwaysObj[pathway];
+  // pull data from pathways object
+  const name = currPathway[0].name;
+  // concatenate alpha values onto color for linear gradient
+  const color = `${currPathway[0].color.color}DE`;
+  const highlightColor = `${currPathway[0].color.highlight}8A`;
+  // var description = currPathway[0].description;
+  const description = pathwayDescriptions[pathway][0].description;
 
   const nameArray = name.split(' ');
   const id = `${nameArray[0].replace(',', '')}-button`;
@@ -76,12 +85,7 @@ const createNewPathwayDiv = function createNewPathwayDiv(name, color, highlightC
       'margin-top': `${marginTopHeight}`,
       'margin-bottom': `${marginBottomHeight}`,
     });
-    newDiv.click(() => {
-      // CHANGE TO DESFRIPTION
-      fadeDescriptionDiv(name, description, highlightColor);
-      setButtonColors(id);
-    });
-    sr.reveal(newDiv);
+
     newDiv.appendTo('#pathway-column-left');
   } else {
     newDiv.css({
@@ -90,15 +94,27 @@ const createNewPathwayDiv = function createNewPathwayDiv(name, color, highlightC
       'margin-top': `${marginTopHeight}`,
       'margin-bottom': `${marginBottomHeight}`,
     });
-    newDiv.click(() => {
-      // CHANGE TO DESCRIPTION
-      // $(pathwayDescriptionTitle).css("color", color);
-      fadeDescriptionDiv(name, description, highlightColor);
-      setButtonColors(id);
-    });
-    sr.reveal(newDiv);
+
     newDiv.appendTo('#pathway-column-right');
   }
+
+  sr.reveal(newDiv);
+
+  newDiv.click(() => {
+    // CHANGE TO DESCRIPTION
+    // $(pathwayDescriptionTitle).css("color", color);
+    boldSelectedEdges([pathway]);
+    fadeDescriptionDiv(name, description, highlightColor);
+    setButtonColors(id);
+    for (let i = 1; i < 4; i += 1) clearLegends(i);
+    $('body').css('pointer-events', 'none');
+    setTimeout(() => {
+      updateLegends(pathway, 1);
+      setTimeout(() => {
+        $('body').css('pointer-events', 'auto');
+      }, 400);
+    }, 400);
+  });
 
   pathwayButtons.push(newDiv);
 
@@ -121,27 +137,18 @@ const loadPathwayButtons = function loadPathwayButtons() {
   const pathwayKeys = Object.keys(pathwaysObj);
   pathwayKeys.forEach((pathway, count) => {
     if (pathway) {
-      const currPathway = pathwaysObj[pathway];
-      // pull data from pathways object
-      const name = currPathway[0].name;
-      // concatenate alpha values onto color for linear gradient
-      const color = `${currPathway[0].color.color}DE`;
-      const highlightColor = `${currPathway[0].color.highlight}8A`;
-      // var description = currPathway[0].description;
-      const description = pathwayDescriptions[pathway][0].description;
-
       // handle top margins for first two pathways, must be half the size
       if (count === 0 || count === 1) {
-        createNewPathwayDiv(name, color, highlightColor, description, height, margin / 2.0, margin, count % 2 === 0);
+        createNewPathwayDiv(pathway, height, margin / 2.0, margin, count % 2 === 0);
       } else if (count === numberOfPathways - 2 || count === numberOfPathways - 1) {
         // handle bottom margins for bottom two pathways
         if (numberOfPathways % 2 === 1 && count === numberOfPathways - 2) {
-          createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 === 0);
+          createNewPathwayDiv(pathway, height, margin, margin, count % 2 === 0);
         } else {
-          createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin / 2, count % 2 === 0);
+          createNewPathwayDiv(pathway, height, margin, margin / 2, count % 2 === 0);
         }
       } else {
-        createNewPathwayDiv(name, color, highlightColor, description, height, margin, margin, count % 2 === 0);
+        createNewPathwayDiv(pathway, height, margin, margin, count % 2 === 0);
       }
     }
   });

@@ -1,10 +1,13 @@
-body html {
+body, html {
   font-size: 100%;
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  overflow-x: hidden; 
   padding: 0 !important;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -116,8 +119,6 @@ li {
    height: 20%;
    display: none;
    background-color: rgba(0, 0, 0, .4);
-   margin-left: 5%;
-   margin-right: 5%;
    margin-bottom: 7.5%
  }
 
@@ -131,6 +132,17 @@ li {
  font-family: 'Open Sans', sans-serif; 
  font-size: 1.2em;
  color: white;
+}
+
+#arrow-wrapper {
+  margin-top: 13%;
+  height: 10%;
+}
+
+#arrow {
+  display: block;
+  margin-left: 47.1%;
+  margin-right: 45%;
 }
 
 #tour-start {
@@ -290,6 +302,7 @@ li {
 
 #help-button:hover {
   color: white;
+  cursor: pointer;
 }
 
 #tour-invisible-start {

@@ -4,6 +4,10 @@ const clearLegends = function (currCol) {
   const currLegend = `#pathway-legend-${currCol}`;
   const currLegendIcon = `#pathway-legend-icon-${currCol}`;
 
+  // reset the click listener
+  $(currLegendIcon).unbind('click');
+  // $(currLegendIcon).removeClass('.active');
+
   $(currLegendIcon).hide({
     easing: 'linear',
     effect: 'fade',
