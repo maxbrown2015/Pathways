@@ -103,16 +103,16 @@ const createNewPathwayDiv = function createNewPathwayDiv(pathway, height, margin
   newDiv.click(() => {
     // CHANGE TO DESCRIPTION
     // $(pathwayDescriptionTitle).css("color", color);
-    boldSelectedEdges([pathway]);
     fadeDescriptionDiv(name, description, highlightColor);
     setButtonColors(id);
-    for (let i = 1; i < 4; i += 1) clearLegends(i);
     $('body').css('pointer-events', 'none');
+    for (let i = 1; i < 4; i += 1) clearLegends(i);
     setTimeout(() => {
       updateLegends(pathway, 1);
       setTimeout(() => {
         $('body').css('pointer-events', 'auto');
-      }, 400);
+        boldSelectedEdges([pathway]);
+      }, 500);
     }, 400);
   });
 
@@ -163,5 +163,5 @@ $('#shield-start').click(() => {
 
 $(document).ready(() => {
   loadPathwayButtons();
-  $('#page-description-wrapper').hide();
+  //$('#page-description-wrapper').hide();
 });

@@ -2,7 +2,6 @@
 
 let firstTime = true;
 
-
 const updatePathwayLists = function updatePathwayLists(pathway, currPath) {
   $(pathway).fadeOut(() => {
     $(pathway).empty();
@@ -23,10 +22,10 @@ const updatePathwayLists = function updatePathwayLists(pathway, currPath) {
   }).fadeIn();
 };
 
-
 const updatePathwayCourseListings = function updatePathwayCourseListings(pathway, currCol) {
-  // console.log(pathway);
+  console.log(pathway);
   const currPath = pathwaysObj[pathway];
+  console.log(currPath);
   const currSectionHeader = `#pathway-header-${currCol}`;
   const currGraphHeader = `#graph-header-${currCol}`;
   const currLi = `#path-list-${currCol}`;
@@ -43,7 +42,6 @@ const updatePathwayCourseListings = function updatePathwayCourseListings(pathway
 
   updatePathwayLists(currLi, currPath);
 };
-
 
 const onNodeSelect = function onNodeSelect(nodeObj) {
   $('#course-area').css('display', 'block');
@@ -96,8 +94,7 @@ const onNodeSelect = function onNodeSelect(nodeObj) {
 
 network.on('selectNode', (eventObj) => {
   const nodeObj = nodes.get(eventObj.nodes[0]);
-  console.log(network.getSeed());
-  console.log(nodeObj.x);
+
   /*
   if (firstTime) {
     startTour(nodeObj);

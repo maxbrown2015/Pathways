@@ -10,36 +10,9 @@ const setSelectionWidth = function setSelectionWidth(step) {
 
 const fadeInEdges = function fadeInEdges(edgeItems) {
   network.selectEdges(edgeItems);
-  for (let i = 0; i < 6; i += 0.075) {
+  for (let i = 0; i < 12; i += 0.5) {
     setSelectionWidth(i);
   }
-};
-
-const onEdgeSelect = function onEdgeSelect(edgeObj) {
-  $('#mynetwork').css('pointer-events', 'none');
-  const pathwayName = pathwayDescriptions[edgeObj.type];
-  network.setOptions({ edges: { selectionWidth: 0 } });
-  network.unselectAll();
-
-  for (let i = 1; i < 4; i += 1) clearLegends(i);
-  setIconSizes();
-
-  setTimeout(() => {
-    updateLegends(edgeObj.type, 1);
-  }, 500);
-
-
-  // retrieve edgeIds of edges that have similar types
-  const edgeItems = edges.getIds({
-    filter(element) {
-      return (element.type === edgeObj.type);
-    },
-  });
-    // highlight edges
-  fadeInEdges(edgeItems);
-  setTimeout(() => {
-    $('#mynetwork').css('pointer-events', 'auto');
-  }, 800);
 };
 
 const boldSelectedEdges = function boldSelectedEdges(pathways) {
@@ -54,6 +27,24 @@ const boldSelectedEdges = function boldSelectedEdges(pathways) {
   });
     // console.log(edgeItems);
   fadeInEdges(edgeItems);
+};
+
+const onEdgeSelect = function onEdgeSelect(edgeObj) {
+  $('#mynetwork').css('pointer-events', 'none');
+  const pathwayName = pathwayDescriptions[edgeObj.type];
+
+  boldSelectedEdges([edgeObj.type]);
+
+  for (let i = 1; i < 4; i += 1) clearLegends(i);
+  setIconSizes();
+
+  setTimeout(() => {
+    updateLegends(edgeObj.type, 1);
+  }, 500);
+
+  setTimeout(() => {
+    $('#mynetwork').css('pointer-events', 'auto');
+  }, 800);
 };
 
 network.on('selectEdge', (eventObj) => {

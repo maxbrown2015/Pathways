@@ -13,19 +13,31 @@ const data = {
 
 const width = 800;
 const height = 800;
+
 const options = {
   width: '100%',
   height: '100%',
   physics: {
     enabled: true,
-    barnesHut: {
-      avoidOverlap: 0.3,
+    forceAtlas2Based: {
+      gravitationalConstant: -30,
+      springLength: 500,
+      springConstant: 0.7,
+      centralGravity: 0.01,
+      avoidOverlap: 0.4,
     },
+    solver: 'forceAtlas2Based',
   },
   edges: {
-
-    width: 1,
-    selectionWidth: 1,
+    width: 3,
+    selectionWidth: 10,
+    /*
+    smooth: {
+      enabled: true,
+      type: 'curvedCW',
+      roundness: 0.2,
+    },
+    */
   },
   interaction: {
     zoomView: false,
@@ -33,58 +45,70 @@ const options = {
     dragView: false,
   },
   nodes: {
+    mass: 10,
     font: {
       color: '#FFFFFF',
-      size: 25,
     },
-    size: 25,
+    color: {
+      highlight: {
+        border: '#FFFFFF',
+      },
+    },
     scaling: {
-      min: 25,
-      max: 25,
+      min: 75,
+      max: 75,
       label: {
-        min: 10,
-        max: 15,
+        min: 75,
+        max: 75,
         enabled: true,
       },
     },
     shape: 'circle',
-    value: 15,
-  },
-  configure: {
-    enabled: false,
-    filter: true,
+    value: 1,
   },
   layout: {
-    randomSeed: 211039,
+    randomSeed: 830686,
   },
 };
 
 /*
+  configure: {
+    enabled: false,
+    filter: 'physics, layout',
+    container: document.getElementById('config'),
+  },
+*/
+
+const setLength = function setLength() {
+  edges.forEach((edge, id) => {
+    edges.update( {id: id, length: 400 });
+  });
+};
+
 const setXandY = function setXandY() {
   let x = 80;
   let y = 0;
   nodes.forEach((node, id) => {
-    nodes.update({ id: id, x: x, y: y});
-    console.log(node);
-    x += 80;
-    if (x > 800) {
+    nodes.update({id: id, x: x, y: y});
+    x += 100;
+    if (x > 1000) {
       x = 0;
       y += 80;
     }
   });
 };
 
-setXandY();
-*/
+//setXandY();
+setLength();
 const network = new vis.Network(container, data, options);
 
-/*
+
 network.moveTo({
-  position: {x: 0, y: 0},
-  offset: {x: -width/2, y: -height/2},
-  scale: 1,
-})
-*/
+  position: {x: -width/2, y: -height/2},
+  offset: {x: 0, y: 0},
+  scale: .01,
+});
+
 
 // initialize the network
 
@@ -109,7 +133,7 @@ const noPhysiscsOption = {
 
 $(document).ready(() => {
   console.log(network.getSeed());
-  setTimeout(() => { network.setOptions(noPhysiscsOption); }, 3000);
+  setTimeout(() => { network.setOptions(noPhysiscsOption); }, 1000);
 });
 
 /**
@@ -217,6 +241,11 @@ const pathwayDescriptions = {
     },
   ],
 };
+
+network.on('hoverNode', 'hoverEdge', () => {
+  //$('body').css('cursor', 'pointer');
+  //add pointer hover, ask shad
+});
 
 /*
 const getPathwayEdges = function getPathwayEdges(pathwayName) {

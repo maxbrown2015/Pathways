@@ -72,7 +72,6 @@ li {
     padding-right: 0 !important;
 }
 
-
 #top-wrapper-row {
   height: 100%;
   width: 100%;
@@ -83,8 +82,7 @@ li {
   height: 100%;
 }
 
-#title-wrapper {
-  margin-top: 5%;  
+#title-wrapper {  
   height: 20%;
   text-align: center;
   margin-bottom: 5%;
@@ -104,9 +102,9 @@ li {
  }
 
  #tour-start-wrapper {
-  height: 20%;
+  height: 10%;
   width: 100%;
-  margin-top: 2em;
+  margin-top: 5%;
   text-align: center;
 }
 
@@ -116,10 +114,11 @@ li {
 }
 
 #page-description-wrapper {
+   margin-top: 5%;
    height: 20%;
-   display: none;
+   display: block;
    background-color: rgba(0, 0, 0, .4);
-   margin-bottom: 7.5%
+   margin-bottom: 10%;  
  }
 
  #explanation-wrapper {
@@ -135,7 +134,6 @@ li {
 }
 
 #arrow-wrapper {
-  margin-top: 13%;
   height: 10%;
 }
 
@@ -205,7 +203,7 @@ li {
   color: white;
   justify-content: center;
   text-align: justify;
-    /*background-color: rgba(0, 0, 0, .4);*/
+  /*background-color: rgba(0, 0, 0, .4);*/
 }
 
 #pathway-area-title {
@@ -225,8 +223,7 @@ li {
 #pathway-description {
   position: relative;
   top: 50%;
-  transform: translateY(-50%); 
-
+  transform: translateY(-50%);
 }
 
 #pathway-description-title {
@@ -251,6 +248,9 @@ li {
   color: white;
 }
 
+.pathway-button:hover  {
+  cursor: pointer;
+}
 
  /**********/
 
